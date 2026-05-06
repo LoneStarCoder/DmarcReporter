@@ -15,7 +15,11 @@
         [string]$MessageFilter = 'UnreadOnly',
 
         [Parameter()]
-        [bool]$MarkAsRead=$false
+        [bool]$MarkAsRead=$false,
+
+        [Parameter()]
+        [ValidateSet('Skip', 'Overwrite')]
+        [string]$ExistingFileAction = 'Skip'
     )
 
     begin {
@@ -35,26 +39,24 @@
             return $safeName
         }
 
-        function Get-UniqueFilePath {
+        function Resolve-AttachmentTargetPath {
             param(
                 [Parameter(Mandatory = $true)]
                 [string]$Directory,
 
                 [Parameter(Mandatory = $true)]
-                [string]$FileName
+                [string]$FileName,
+
+                [Parameter(Mandatory = $true)]
+                [ValidateSet('Skip', 'Overwrite')]
+                [string]$ConflictAction
             )
 
             $safeFileName = Get-SafeFileName -FileName $FileName
-            $baseName = [System.IO.Path]::GetFileNameWithoutExtension($safeFileName)
-            $extension = [System.IO.Path]::GetExtension($safeFileName)
-
             $candidatePath = Join-Path -Path $Directory -ChildPath $safeFileName
-            $counter = 1
 
-            while (Test-Path -LiteralPath $candidatePath) {
-                $candidateName = '{0}_{1}{2}' -f $baseName, $counter, $extension
-                $candidatePath = Join-Path -Path $Directory -ChildPath $candidateName
-                $counter++
+            if ((Test-Path -LiteralPath $candidatePath) -and $ConflictAction -eq 'Skip') {
+                return $null
             }
 
             return $candidatePath
@@ -139,9 +141,11 @@
             $filteredItems = $items.Restrict($filter)
 
             $savedFiles = New-Object System.Collections.Generic.List[object]
+            $skippedFiles = New-Object System.Collections.Generic.List[object]
             $mailEntryIdsToMarkRead = New-Object System.Collections.Generic.List[string]
             $processedMailCount = 0
             $savedAttachmentCount = 0
+            $skippedAttachmentCount = 0
 
             foreach ($item in @($filteredItems)) {
                 # 43 = olMail
@@ -159,9 +163,25 @@
                     for ($i = 1; $i -le $item.Attachments.Count; $i++) {
                         $attachment = $item.Attachments.Item($i)
 
-                        $targetPath = Get-UniqueFilePath `
+                        $targetPath = Resolve-AttachmentTargetPath `
                             -Directory $resolvedDestination `
-                            -FileName $attachment.FileName
+                            -FileName $attachment.FileName `
+                            -ConflictAction $ExistingFileAction
+
+                        if ($null -eq $targetPath) {
+                            $skippedAttachmentCount++
+
+                            $skippedFiles.Add([pscustomobject]@{
+                                ReceivedTime = $item.ReceivedTime
+                                Subject      = $item.Subject
+                                Sender       = $item.SenderEmailAddress
+                                Attachment   = $attachment.FileName
+                                ExistingPath = Join-Path -Path $resolvedDestination -ChildPath (Get-SafeFileName -FileName $attachment.FileName)
+                            }) | Out-Null
+
+                            [System.Runtime.InteropServices.Marshal]::ReleaseComObject($attachment) | Out-Null
+                            continue
+                        }
 
                         $attachment.SaveAsFile($targetPath)
                         $savedAttachmentCount++
@@ -206,9 +226,12 @@
                 Since              = $since
                 DestinationFolder  = $resolvedDestination
                 MessageFilter      = $MessageFilter
+                ExistingFileAction = $ExistingFileAction
                 ProcessedMailCount = $processedMailCount
                 SavedAttachments   = $savedAttachmentCount
+                SkippedAttachments = $skippedAttachmentCount
                 SavedFiles         = $savedFiles
+                SkippedFiles       = $skippedFiles
             }
         }
         finally {

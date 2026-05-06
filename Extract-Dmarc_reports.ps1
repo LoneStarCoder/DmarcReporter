@@ -52,17 +52,7 @@ function Export-DmarcMsgAttachments {
                 return $candidatePath
             }
 
-            $baseName = [System.IO.Path]::GetFileNameWithoutExtension($safeFileName)
-            $extension = [System.IO.Path]::GetExtension($safeFileName)
-            $counter = 1
-
-            do {
-                $candidateName = '{0}_{1}{2}' -f $baseName, $counter, $extension
-                $candidatePath = Join-Path -Path $Directory -ChildPath $candidateName
-                $counter++
-            } while (Test-Path -LiteralPath $candidatePath)
-
-            return $candidatePath
+            return $null
         }
     }
 
@@ -138,6 +128,18 @@ function Export-DmarcMsgAttachments {
                                 -Directory $resolvedSourceFolder `
                                 -FileName $attachmentFileName `
                                 -Overwrite:$Overwrite
+
+                            if ([string]::IsNullOrWhiteSpace($destinationPath)) {
+                                $results.Add([pscustomobject]@{
+                                    MsgFile        = $msgFile.FullName
+                                    Attachment     = $attachmentFileName
+                                    SavedTo        = $null
+                                    Extracted      = $false
+                                    Message        = 'Skipped because the destination file already exists and overwrite is disabled.'
+                                }) | Out-Null
+
+                                continue
+                            }
 
                             $attachment.SaveAsFile($destinationPath)
 
@@ -259,17 +261,7 @@ function Export-DmarcXmlReports {
                 return $candidatePath
             }
 
-            $baseName = [System.IO.Path]::GetFileNameWithoutExtension($safeFileName)
-            $extension = [System.IO.Path]::GetExtension($safeFileName)
-            $counter = 1
-
-            do {
-                $candidateName = '{0}_{1}{2}' -f $baseName, $counter, $extension
-                $candidatePath = Join-Path -Path $Directory -ChildPath $candidateName
-                $counter++
-            } while (Test-Path -LiteralPath $candidatePath)
-
-            return $candidatePath
+            return $null
         }
 
         function Export-GZipXmlFile {
@@ -302,6 +294,16 @@ function Export-DmarcXmlReports {
                 -Directory $DestinationDirectory `
                 -FileName $outputFileName `
                 -Overwrite:$Overwrite
+
+            if ([string]::IsNullOrWhiteSpace($destinationPath)) {
+                return [pscustomobject]@{
+                    SourceFile      = $File.FullName
+                    SourceType      = 'GZip'
+                    XmlFile         = $null
+                    Exported        = $false
+                    Message         = 'Skipped because the destination file already exists and overwrite is disabled.'
+                }
+            }
 
             $inputStream = $null
             $gzipStream = $null
@@ -386,6 +388,19 @@ function Export-DmarcXmlReports {
                         -Directory $DestinationDirectory `
                         -FileName $destinationFileName `
                         -Overwrite:$Overwrite
+
+                    if ([string]::IsNullOrWhiteSpace($destinationPath)) {
+                        $results.Add([pscustomobject]@{
+                            SourceFile      = $File.FullName
+                            SourceType      = 'Zip'
+                            ZipEntry        = $entry.FullName
+                            XmlFile         = $null
+                            Exported        = $false
+                            Message         = 'Skipped because the destination file already exists and overwrite is disabled.'
+                        }) | Out-Null
+
+                        continue
+                    }
 
                     try {
                         [System.IO.Compression.ZipFileExtensions]::ExtractToFile(

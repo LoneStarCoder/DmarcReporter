@@ -131,12 +131,9 @@ foreach ($item in $xmlfiles) {
     }
 }
 
-$xml
-
 $mastertable = @()
 
 foreach ($record in $xml) {
-    $geouri = $null
 
     $reportMetadata = $record.feedback.report_metadata
     $policyPublished = $record.feedback.policy_published
@@ -193,22 +190,6 @@ foreach ($record in $xml) {
             spfresult              = if ([string]::IsNullOrWhiteSpace([string]$domainrecord.auth_results.spf.result)) { $null } else { [string]$domainrecord.auth_results.spf.result }
         }
 
-        if ($geolookupenabled.IsPresent) {
-            $geouri = "http://ip-api.com/json/" + $domainrecord.row.source_ip
-
-            try {
-                Start-Sleep -Milliseconds 500
-                $geodata = Invoke-RestMethod -Method Get -Uri $geouri
-            }
-            catch {
-            }
-
-            $temptable | Add-Member -Type NoteProperty -Name "latitude" -Value $geodata.lat
-            $temptable | Add-Member -Type NoteProperty -Name "longitude" -Value $geodata.lon
-            $temptable | Add-Member -Type NoteProperty -Name "country_name" -Value $geodata.country
-            $temptable | Add-Member -Type NoteProperty -Name "region_name" -Value $geodata.regionname
-            $temptable | Add-Member -Type NoteProperty -Name "city" -Value $geodata.city
-        }
 
         $mastertable += $temptable
     }
