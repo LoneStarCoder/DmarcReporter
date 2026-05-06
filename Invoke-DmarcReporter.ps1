@@ -14,7 +14,10 @@
         [string]$MessageFilter = 'UnreadOnly',
 
         [Parameter()]
-        [bool]$MarkAsRead
+        [bool]$MarkAsRead,
+
+        [Parameter()]
+        [bool]$GenerateReports=$false
     )
 #endregion
 
@@ -28,7 +31,14 @@ Write-Host "Extracting xml from Attachments" -ForegroundColor Green
 Write-Host "Processing xml Files"  -ForegroundColor Green
 .\Process-Dmarc_xml.ps1
 
-Write-Host "Generating Reports"
-.\New-DMarcReport.ps1
+if ($GenerateReports) {
+ Write-Host "Updating GEO IP Cache" -ForegroundColor Green
+ .\Invoke-GEO_IP_Lookup.ps1
 
+ Write-Host "Merging GEO IP Data Into Master Table" -ForegroundColor Green
+ .\Merge-GEOIntoMasterTable.ps1
+
+ Write-Host "Generating Reports"
+ .\New-DMarcReport.ps1
+}
 #endregion

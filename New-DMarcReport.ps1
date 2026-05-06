@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $false)]
-    [string]$InputJsonPath = ".\mastertable.json",
+    [string]$InputJsonPath = ".\mastertable.enriched.json",
 
     [Parameter(Mandatory = $false)]
     [string]$OutputDirectory = ".\DmarcReport"
@@ -185,19 +185,30 @@ function New-Summary {
         Sort-Object -Property MessageCount -Descending
 }
 
-if (-not (Test-Path -LiteralPath $InputJsonPath)) {
-    throw "Input JSON file not found: $InputJsonPath"
-}
-
 if (-not (Test-Path -LiteralPath $OutputDirectory)) {
     New-Item -Path $OutputDirectory -ItemType Directory | Out-Null
 }
 
-$rawJson = Get-Content -LiteralPath $InputJsonPath -Raw
+$resolvedInputJsonPath = $InputJsonPath
+
+if ([string]::IsNullOrWhiteSpace($resolvedInputJsonPath)) {
+    if (Test-Path -LiteralPath ".\mastertable.enriched.json") {
+        $resolvedInputJsonPath = ".\mastertable.enriched.json"
+    }
+    else {
+        $resolvedInputJsonPath = ".\mastertable.json"
+    }
+}
+
+if (-not (Test-Path -LiteralPath $resolvedInputJsonPath)) {
+    throw "Input JSON file not found: $resolvedInputJsonPath"
+}
+
+$rawJson = Get-Content -LiteralPath $resolvedInputJsonPath -Raw
 $records = $rawJson | ConvertFrom-Json
 
 if ($null -eq $records) {
-    throw "No records were loaded from: $InputJsonPath"
+    throw "No records were loaded from: $resolvedInputJsonPath"
 }
 
 $normalized = foreach ($record in $records) {
@@ -281,6 +292,17 @@ $normalized = foreach ($record in $records) {
         SpfDomain         = $record.spfdomain
         SpfScope          = $record.spfscope
         SpfResult         = $record.spfresult
+        GeoLookupStatus   = $record.geo_lookup_status
+        GeoLookupError    = $record.geo_lookup_error
+        GeoHostname       = $record.geo_hostname
+        GeoCity           = $record.geo_city
+        GeoRegion         = $record.geo_region
+        GeoCountry        = $record.geo_country
+        GeoLatitude       = $record.geo_latitude
+        GeoLongitude      = $record.geo_longitude
+        GeoOrg            = $record.geo_org
+        GeoPostal         = $record.geo_postal
+        GeoTimezone       = $record.geo_timezone
         DmarcAligned      = $dmarcAligned
         WouldQuarantineUnderPQuarantine = (-not $dmarcAligned)
         QuarantineReason = if ($dmarcAligned) { "DMARC aligned" } else { "DMARC not aligned" }
@@ -321,7 +343,7 @@ $flattenedMasterTable |
     Export-Csv -Path $masterTableFlattenedCsvPath -NoTypeInformation -Encoding UTF8
 
 $quarantineSimulation = $normalized |
-    Select-Object ProcessDate, ReportId, ReportDateBeginUtc, ReportDateEndUtc, OrgName, DmarcDomain, PolicyP, PolicySp, PolicyPct, HeaderFrom, EnvelopeFrom, SourceIp, SourceIpVersion, SourceIpCount, DmarcDisposition, DmarcSpf, DmarcDkim, SpfDomain, SpfResult, DkimDomain, DkimSelector, DkimResult, PolicyOverrideType, PolicyOverrideComment, DmarcAligned, WouldQuarantineUnderPQuarantine, QuarantineReason
+    Select-Object ProcessDate, ReportId, ReportDateBeginUtc, ReportDateEndUtc, OrgName, DmarcDomain, PolicyP, PolicySp, PolicyPct, HeaderFrom, EnvelopeFrom, SourceIp, SourceIpVersion, SourceIpCount, DmarcDisposition, DmarcSpf, DmarcDkim, SpfDomain, SpfResult, DkimDomain, DkimSelector, DkimResult, PolicyOverrideType, PolicyOverrideComment, GeoLookupStatus, GeoCity, GeoRegion, GeoCountry, GeoLatitude, GeoLongitude, GeoOrg, GeoTimezone, DmarcAligned, WouldQuarantineUnderPQuarantine, QuarantineReason
 
 $summaryByOrg = New-Summary -Rows $normalized -GroupProperties @("OrgName") -Name "ByOrg"
 $summaryBySourceIp = New-Summary -Rows $normalized -GroupProperties @("SourceIp", "OrgName") -Name "BySourceIp"
@@ -471,7 +493,7 @@ Output files are in: $OutputDirectory
 $html | Set-Content -Path $htmlReportPath -Encoding UTF8
 
 [PSCustomObject]@{
-    InputJson                  = (Resolve-Path -LiteralPath $InputJsonPath).Path
+    InputJson                  = (Resolve-Path -LiteralPath $resolvedInputJsonPath).Path
     OutputDirectory            = (Resolve-Path -LiteralPath $OutputDirectory).Path
     DetailCsv                  = $detailCsvPath
     MasterTableRawCsv          = $masterTableCsvPath

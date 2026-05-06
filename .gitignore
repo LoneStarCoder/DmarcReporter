@@ -3,3 +3,4 @@ dmarc_xml_exports/*
 DmarcReport/*
 History/*
 mastertable.json
+DmarcReport_enriched_validation/
