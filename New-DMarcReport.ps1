@@ -64,6 +64,94 @@ function ConvertTo-IntSafe {
     return 0
 }
 
+function ConvertTo-NullableInt {
+    param(
+        [AllowNull()]
+        [object]$Value
+    )
+
+    if ($null -eq $Value -or [string]::IsNullOrWhiteSpace([string]$Value)) {
+        return $null
+    }
+
+    $number = 0
+
+    if ([int]::TryParse([string]$Value, [ref]$number)) {
+        return $number
+    }
+
+    return $null
+}
+
+function ConvertTo-FlatCsvValue {
+    param(
+        [AllowNull()]
+        [object]$Value
+    )
+
+    if ($null -eq $Value) {
+        return $null
+    }
+
+    if ($Value -is [string] -or $Value -is [ValueType]) {
+        return $Value
+    }
+
+    if ($Value -is [System.Collections.IEnumerable] -and -not ($Value -is [string])) {
+        $items = @($Value)
+
+        if ($items.Count -eq 0) {
+            return $null
+        }
+
+        $flattenedItems = foreach ($item in $items) {
+            if ($null -eq $item) {
+                continue
+            }
+
+            if ($item -is [string] -or $item -is [ValueType]) {
+                [string]$item
+                continue
+            }
+
+            if ($item.PSObject.Properties.Count -gt 0) {
+                (
+                    $item.PSObject.Properties |
+                        ForEach-Object {
+                            if ($null -eq $_.Value -or [string]::IsNullOrWhiteSpace([string]$_.Value)) {
+                                return
+                            }
+
+                            '{0}={1}' -f $_.Name, $_.Value
+                        } |
+                        Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+                ) -join ', '
+                continue
+            }
+
+            [string]$item
+        }
+
+        return ($flattenedItems | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join '; '
+    }
+
+    if ($Value.PSObject.Properties.Count -gt 0) {
+        return (
+            $Value.PSObject.Properties |
+                ForEach-Object {
+                    if ($null -eq $_.Value -or [string]::IsNullOrWhiteSpace([string]$_.Value)) {
+                        return
+                    }
+
+                    '{0}={1}' -f $_.Name, $_.Value
+                } |
+                Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+        ) -join '; '
+    }
+
+    return [string]$Value
+}
+
 function New-Summary {
     param(
         [Parameter(Mandatory = $true)]
@@ -115,9 +203,15 @@ if ($null -eq $records) {
 $normalized = foreach ($record in $records) {
     $sourceIpCount = ConvertTo-IntSafe -Value $record.sourceipcount
     $dkimDomains = @()
+    $dkimSelectors = @()
     $dkimResults = @()
+    $policyOverrideTypes = @()
+    $policyOverrideComments = @()
     [array]$dkimDomains = ConvertTo-Array -Value $record.dkimdomain
+    [array]$dkimSelectors = ConvertTo-Array -Value $record.dkimselector
     [array]$dkimResults = ConvertTo-Array -Value $record.dkimresult
+    [array]$policyOverrideTypes = ConvertTo-Array -Value $record.policyoverridetype
+    [array]$policyOverrideComments = ConvertTo-Array -Value $record.policyoverridecomment
 
     $dkimPairs = for ($index = 0; $index -lt ([Math]::Max($dkimDomains.Count, $dkimResults.Count)); $index++) {
         $domain = if ($index -lt $dkimDomains.Count) { [string]$dkimDomains[$index] } else { "" }
@@ -139,18 +233,49 @@ $normalized = foreach ($record in $records) {
     $spfPass = $record.dmarcspf -eq "pass"
     $dkimPass = $record.dmarcdkim -eq "pass"
     $dmarcAligned = $spfPass -or $dkimPass
+    $sourceIpVersion = if ([string]::IsNullOrWhiteSpace([string]$record.sourceipversion)) {
+        if ([string]::IsNullOrWhiteSpace([string]$record.sourceip)) {
+            $null
+        }
+        elseif ([string]$record.sourceip -like '*:*') {
+            'IPv6'
+        }
+        else {
+            'IPv4'
+        }
+    }
+    else {
+        [string]$record.sourceipversion
+    }
 
     [PSCustomObject]@{
         ProcessDate       = $record.processdate
+        ReportId          = $record.reportid
+        ReportEmail       = $record.reportemail
+        ReportDateBegin   = ConvertTo-NullableInt -Value $record.reportdatebegin
+        ReportDateEnd     = ConvertTo-NullableInt -Value $record.reportdateend
+        ReportDateBeginUtc = $record.reportdatebeginutc
+        ReportDateEndUtc  = $record.reportdateendutc
         OrgName           = $record.orgname
         DmarcDomain       = $record.dmarcdomain
+        PolicyP           = $record.policyp
+        PolicySp          = $record.policysp
+        PolicyPct         = ConvertTo-NullableInt -Value $record.policypct
+        PolicyAdkim       = $record.policyadkim
+        PolicyAspf        = $record.policyaspf
+        PolicyFo          = $record.policyfo
         SourceIp          = $record.sourceip
+        SourceIpVersion   = $sourceIpVersion
         SourceIpCount     = $sourceIpCount
         DmarcDisposition  = $record.dmarcdisposition
         DmarcSpf          = $record.dmarcspf
         DmarcDkim         = $record.dmarcdkim
+        PolicyOverrideType = ConvertTo-JoinedString -Value $policyOverrideTypes
+        PolicyOverrideComment = ConvertTo-JoinedString -Value $policyOverrideComments
+        EnvelopeFrom      = $record.envelopefrom
         HeaderFrom        = $record.headerfrom
         DkimDomain        = ConvertTo-JoinedString -Value $record.dkimdomain
+        DkimSelector      = ConvertTo-JoinedString -Value $dkimSelectors
         DkimResult        = ConvertTo-JoinedString -Value $record.dkimresult
         DkimPairs         = ($dkimPairs | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join "; "
         SpfDomain         = $record.spfdomain
@@ -165,6 +290,8 @@ $normalized = foreach ($record in $records) {
 }
 
 $detailCsvPath              = Join-Path $OutputDirectory "dmarc-detail-normalized.csv"
+$masterTableCsvPath         = Join-Path $OutputDirectory "dmarc-mastertable-raw.csv"
+$masterTableFlattenedCsvPath = Join-Path $OutputDirectory "dmarc-mastertable-flattened.csv"
 $quarantineSimulationPath   = Join-Path $OutputDirectory "dmarc-quarantine-simulation.csv"
 $summaryByOrgPath           = Join-Path $OutputDirectory "dmarc-summary-by-org.csv"
 $summaryBySourceIpPath      = Join-Path $OutputDirectory "dmarc-summary-by-sourceip.csv"
@@ -177,8 +304,24 @@ $htmlReportPath             = Join-Path $OutputDirectory "dmarc-report.html"
 $normalized |
     Export-Csv -Path $detailCsvPath -NoTypeInformation -Encoding UTF8
 
+$records |
+    Export-Csv -Path $masterTableCsvPath -NoTypeInformation -Encoding UTF8
+
+$flattenedMasterTable = foreach ($record in $records) {
+    $flattenedRecord = [ordered]@{}
+
+    foreach ($property in $record.PSObject.Properties) {
+        $flattenedRecord[$property.Name] = ConvertTo-FlatCsvValue -Value $property.Value
+    }
+
+    [PSCustomObject]$flattenedRecord
+}
+
+$flattenedMasterTable |
+    Export-Csv -Path $masterTableFlattenedCsvPath -NoTypeInformation -Encoding UTF8
+
 $quarantineSimulation = $normalized |
-    Select-Object ProcessDate, OrgName, DmarcDomain, HeaderFrom, SourceIp, SourceIpCount, DmarcDisposition, DmarcSpf, DmarcDkim, SpfDomain, SpfResult, DkimDomain, DkimResult, DmarcAligned, WouldQuarantineUnderPQuarantine, QuarantineReason
+    Select-Object ProcessDate, ReportId, ReportDateBeginUtc, ReportDateEndUtc, OrgName, DmarcDomain, PolicyP, PolicySp, PolicyPct, HeaderFrom, EnvelopeFrom, SourceIp, SourceIpVersion, SourceIpCount, DmarcDisposition, DmarcSpf, DmarcDkim, SpfDomain, SpfResult, DkimDomain, DkimSelector, DkimResult, PolicyOverrideType, PolicyOverrideComment, DmarcAligned, WouldQuarantineUnderPQuarantine, QuarantineReason
 
 $summaryByOrg = New-Summary -Rows $normalized -GroupProperties @("OrgName") -Name "ByOrg"
 $summaryBySourceIp = New-Summary -Rows $normalized -GroupProperties @("SourceIp", "OrgName") -Name "BySourceIp"
@@ -331,6 +474,8 @@ $html | Set-Content -Path $htmlReportPath -Encoding UTF8
     InputJson                  = (Resolve-Path -LiteralPath $InputJsonPath).Path
     OutputDirectory            = (Resolve-Path -LiteralPath $OutputDirectory).Path
     DetailCsv                  = $detailCsvPath
+    MasterTableRawCsv          = $masterTableCsvPath
+    MasterTableFlattenedCsv    = $masterTableFlattenedCsvPath
     QuarantineSimulationCsv    = $quarantineSimulationPath
     SummaryByOrgCsv            = $summaryByOrgPath
     SummaryBySourceIpCsv       = $summaryBySourceIpPath
