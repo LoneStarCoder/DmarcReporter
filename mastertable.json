@@ -1,0 +1,2372 @@
+﻿[
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.14.98",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.20.103",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.23.94",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.13.72",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.13.74",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.6.107",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.1.111",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.4.8",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.8.57",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  null,
+        "dkimresult":  null,
+        "spfdomain":  "aramcotrading.us",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.1.33",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  null,
+        "dkimresult":  null,
+        "spfdomain":  "aramcotrading.us",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "74.125.82.197",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "softfail"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "AMAZON-SES",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "74.125.82.198",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "softfail"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "209.85.219.69",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "alfhouston-com.20251104.gappssmtp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "alfhouston.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "212.227.126.134",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  null,
+        "dkimresult":  null,
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "softfail"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "209.85.219.71",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "alfhouston-com.20251104.gappssmtp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "alfhouston.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "74.208.4.196",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  null,
+        "dkimresult":  null,
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "softfail"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "emailsrvr.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "fail"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "emailsrvr.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "fail"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "emailsrvr.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "fail"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "emailsrvr.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "emailsrvr.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "esa1.hc4457-84.iphmx.com",
+        "dmarcdomain":  "btportal.tpcgrp.com",
+        "sourceip":  "40.93.13.55",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "btportal.tpcgrp.com",
+        "dkimdomain":  null,
+        "dkimresult":  null,
+        "spfdomain":  "btportal.tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "none"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "esa2.hc4457-84.iphmx.com",
+        "dmarcdomain":  "btportal.tpcgrp.com",
+        "sourceip":  "40.93.1.75",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "btportal.tpcgrp.com",
+        "dkimdomain":  null,
+        "dkimresult":  null,
+        "spfdomain":  "btportal.tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "none"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "esa2.hc4457-84.iphmx.com",
+        "dmarcdomain":  "btportal.tpcgrp.com",
+        "sourceip":  "40.93.1.78",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "btportal.tpcgrp.com",
+        "dkimdomain":  null,
+        "dkimresult":  null,
+        "spfdomain":  "btportal.tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "none"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Fastmail Pty Ltd",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "temperror",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "204.220.184.15",
+        "sourceipcount":  "8",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "5thring.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "5thring.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "204.220.184.4",
+        "sourceipcount":  "13",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "5thring.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "5thring.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "21",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "23",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "21",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "21",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "115",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "113",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "115",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "113",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "115",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "113",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "115",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "113",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "115",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "113",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "115",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "113",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "115",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa1.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "113",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Mimecast",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Outlook.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Outlook.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Outlook.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "208.86.168.7",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "ultipro.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "softfail"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Outlook.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "2",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Outlook.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "fail",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "8",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "208.86.168.7",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "ultipro.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "softfail"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "7",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "4",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "permerror",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "5",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "208.86.168.7",
+        "sourceipcount":  "6",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "ultipro.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "softfail"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "209.85.219.69",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "alfhouston-com.20251104.gappssmtp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "alfhouston.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "209.85.219.70",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "fail",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "alfhouston-com.20251104.gappssmtp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "alfhouston.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.107.208.74",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "permerror"
+                       ],
+        "spfdomain":  "apalslocksmith.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "40.93.198.83",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "permerror"
+                       ],
+        "spfdomain":  "apalslocksmith.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "52.101.193.80",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "permerror"
+                       ],
+        "spfdomain":  "apalslocksmith.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "52.101.201.91",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "permerror"
+                       ],
+        "spfdomain":  "apalslocksmith.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "52.101.52.113",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "permerror"
+                       ],
+        "spfdomain":  "apalslocksmith.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "52.101.53.118",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "permerror"
+                       ],
+        "spfdomain":  "apalslocksmith.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "52.101.57.74",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "permerror"
+                       ],
+        "spfdomain":  "apalslocksmith.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "52.101.62.93",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "permerror"
+                       ],
+        "spfdomain":  "apalslocksmith.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "9",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "Yahoo",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  [
+                           "tpcgrp.com",
+                           "tpcgrp.com"
+                       ],
+        "dkimresult":  [
+                           "pass",
+                           "pass"
+                       ],
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  null,
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "zoho.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "fail",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "esa2.hc4457-84.iphmx.com",
+        "spfscope":  "helo",
+        "spfresult":  "none"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "zoho.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "207.54.85.150",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "pass"
+    },
+    {
+        "processdate":  null,
+        "orgname":  "zoho.com",
+        "dmarcdomain":  "tpcgrp.com",
+        "sourceip":  "68.232.157.85",
+        "sourceipcount":  "1",
+        "dmarcdisposition":  "none",
+        "dmarcspf":  "pass",
+        "dmarcdkim":  "pass",
+        "headerfrom":  "tpcgrp.com",
+        "dkimdomain":  "tpcgrp.com",
+        "dkimresult":  "pass",
+        "spfdomain":  "tpcgrp.com",
+        "spfscope":  "mfrom",
+        "spfresult":  "pass"
+    }
+]
