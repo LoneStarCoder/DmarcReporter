@@ -1,3 +1,18 @@
+    [CmdletBinding()]
+    param(
+        [Parameter()]
+        [string]$SourceFolder = '.\dmarc_report_emails',
+
+        [Parameter()]
+        [string]$DestinationFolder = '.\dmarc_xml_exports',
+
+        [Parameter()]
+        [switch]$Recurse,
+
+        [Parameter()]
+        [switch]$Overwrite
+    )
+
 function Export-DmarcMsgAttachments {
     [CmdletBinding()]
     param(
@@ -528,6 +543,11 @@ function Export-DmarcXmlReports {
     }
 }
 
-
-Export-DmarcMsgAttachments
-Export-DmarcXmlReports
+if ($Overwrite) {
+    Export-DmarcMsgAttachments -Overwrite
+    Export-DmarcXmlReports -Overwrite
+}
+else {
+    Export-DmarcMsgAttachments
+    Export-DmarcXmlReports
+}

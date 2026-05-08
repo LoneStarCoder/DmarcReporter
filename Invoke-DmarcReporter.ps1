@@ -17,13 +17,17 @@
         [bool]$MarkAsRead,
 
         [Parameter()]
+        [ValidateSet('Skip', 'Overwrite')]
+        [string]$ExistingFileAction = 'Skip',
+
+        [Parameter()]
         [bool]$GenerateReports=$false
     )
 #endregion
 
 #region Do Work
 Write-Host "Attempting to get Attachments from Emails" -ForegroundColor Green
-$Get_Dmarc_emails_Results = .\Get-Dmarc_emails.ps1 -Days $Days -EmailFolderPath $EmailFolderPath -MessageFilter $MessageFilter -MarkAsRead $MarkAsRead
+$Get_Dmarc_emails_Results = .\Get-Dmarc_emails.ps1 -Days $Days -EmailFolderPath $EmailFolderPath -MessageFilter $MessageFilter -MarkAsRead $MarkAsRead -ExistingFileAction $ExistingFileAction
 Write-Host "Email Results" -ForegroundColor Green
 $Get_Dmarc_emails_Results
 if (($Get_Dmarc_emails_Results.SavedAttachments) -ge 1) {
