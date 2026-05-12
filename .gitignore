@@ -16,5 +16,5 @@ config/*.json
 *.local.json
 *.tmp
 *.log
-notes.md
-plan.md
+./notes.md
+./plan.md
