@@ -2,6 +2,14 @@
 
 PowerShell tooling for pulling DMARC aggregate report attachments from Outlook, extracting XML payloads, normalizing them into JSON, enriching source IPs with GEO data, and generating CSV/HTML reporting artifacts.
 
+- Author(s): Brody Kilpatrick (LonestarCoder), Codex
+- Github Repository: https://github.com/LoneStarCoder
+- License: https://github.com/LoneStarCoder/DmarcReporter/blob/main/LICENSE
+
+## Attribution
+
+Some DMARC processing concepts and modified helper logic were inspired by Martijn van Geffen's MIT-licensed [`DMARC-report`](https://github.com/martijnvangeffen/DMARC-report) PowerShell project.
+
 ## Module Quick Start
 
 Import the module from the repo root:
@@ -13,7 +21,7 @@ Import-Module .\DMARCReporter.psd1 -Force
 Create a starter config:
 
 ```powershell
-New-DMARCReporterConfig -Path .\config\dmarc.config.json -MailboxFolder 'Inbox\Ignore\dmarcreports'
+New-DMARCReporterConfig -Path .\config\dmarc.config.json -MailboxFolder 'Inbox\dmarcreports'
 ```
 
 Run the full pipeline:
@@ -26,7 +34,7 @@ Or run without a config file:
 
 ```powershell
 Invoke-DMARCReporter `
-    -MailboxFolder 'Inbox\Ignore\dmarcreports' `
+    -MailboxFolder 'Inbox\dmarcreports' `
     -OutputRoot '.\Runs' `
     -Days 7 `
     -MessageFilter UnreadOnly
@@ -224,6 +232,4 @@ The codebase implements a local Windows pipeline:
 
 This project is licensed under the MIT License. See `LICENSE`.
 
-## Attribution
 
-Some DMARC processing concepts and modified helper logic were inspired by Martijn van Geffen's MIT-licensed [`DMARC-report`](https://github.com/martijnvangeffen/DMARC-report) PowerShell project.

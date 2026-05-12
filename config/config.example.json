@@ -1,5 +1,5 @@
 {
-  "MailboxFolder": "Inbox\\Ignore\\dmarcreports",
+  "MailboxFolder": "Inbox\\dmarcreports",
   "OutputRoot": ".\\Runs",
   "Days": 7,
   "MessageFilter": "UnreadOnly",
