@@ -3,7 +3,7 @@
     [string]$InputJsonPath,
 
     [Parameter(Mandatory = $false)]
-    [string]$OutputPath = ".\DmarcDashboard\dashboard.html",
+    [string]$OutputPath = ".\DMARCReporter\dashboard.html",
 
     [Parameter(Mandatory = $false)]
     [string]$Title = "DMARC Intelligence Dashboard"

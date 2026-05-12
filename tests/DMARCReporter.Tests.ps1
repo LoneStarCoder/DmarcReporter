@@ -1,21 +1,21 @@
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$modulePath = Join-Path $repoRoot 'DmarcDashboard.psd1'
+$modulePath = Join-Path $repoRoot 'DMARCReporter.psd1'
 
 Import-Module $modulePath -Force
 
-Describe 'DmarcDashboard module' {
+Describe 'DMARCReporter module' {
     It 'exports the public commands' {
-        $commands = (Get-Command -Module DmarcDashboard).Name
-        ($commands -contains 'Invoke-DmarcDashboard') | Should Be $true
-        ($commands -contains 'New-DmarcDashboardConfig') | Should Be $true
+        $commands = (Get-Command -Module DMARCReporter).Name
+        ($commands -contains 'Invoke-DMARCReporter') | Should Be $true
+        ($commands -contains 'New-DMARCReporterConfig') | Should Be $true
     }
 
     It 'creates a default config file' {
-        $testRoot = Join-Path $env:TEMP ('DmarcDashboardTests_' + [guid]::NewGuid().ToString('N'))
+        $testRoot = Join-Path $env:TEMP ('DMARCReporterTests_' + [guid]::NewGuid().ToString('N'))
         New-Item -Path $testRoot -ItemType Directory -Force | Out-Null
         try {
             $configPath = Join-Path $testRoot 'dmarc.config.json'
-            New-DmarcDashboardConfig -Path $configPath -MailboxFolder 'Inbox\DMARC' -OutputRoot '.\Runs' | Out-Null
+            New-DMARCReporterConfig -Path $configPath -MailboxFolder 'Inbox\DMARC' -OutputRoot '.\Runs' | Out-Null
             $config = Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
             $config.MailboxFolder | Should Be 'Inbox\DMARC'
             $config.OutputRoot | Should Be '.\Runs'
@@ -31,8 +31,8 @@ Describe 'DmarcDashboard module' {
     }
 }
 
-Describe 'DmarcDashboard private helpers' {
-    InModuleScope DmarcDashboard {
+Describe 'DMARCReporter private helpers' {
+    InModuleScope DMARCReporter {
         It 'normalizes null to an empty array' {
             @(ConvertTo-DmarcArray -Value $null).Count | Should Be 0
         }

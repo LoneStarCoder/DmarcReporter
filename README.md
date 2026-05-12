@@ -1,4 +1,4 @@
-# DMARC3 / DmarcDashboard
+# DMARCReporter
 
 PowerShell tooling for pulling DMARC aggregate report attachments from Outlook, extracting XML payloads, normalizing them into JSON, enriching source IPs with GEO data, and generating CSV/HTML reporting artifacts.
 
@@ -7,25 +7,25 @@ PowerShell tooling for pulling DMARC aggregate report attachments from Outlook, 
 Import the module from the repo root:
 
 ```powershell
-Import-Module .\DmarcDashboard.psd1 -Force
+Import-Module .\DMARCReporter.psd1 -Force
 ```
 
 Create a starter config:
 
 ```powershell
-New-DmarcDashboardConfig -Path .\config\dmarc.config.json -MailboxFolder 'Inbox\Ignore\dmarcreports'
+New-DMARCReporterConfig -Path .\config\dmarc.config.json -MailboxFolder 'Inbox\Ignore\dmarcreports'
 ```
 
 Run the full pipeline:
 
 ```powershell
-Invoke-DmarcDashboard -ConfigPath .\config\dmarc.config.json
+Invoke-DMARCReporter -ConfigPath .\config\dmarc.config.json
 ```
 
 Or run without a config file:
 
 ```powershell
-Invoke-DmarcDashboard `
+Invoke-DMARCReporter `
     -MailboxFolder 'Inbox\Ignore\dmarcreports' `
     -OutputRoot '.\Runs' `
     -Days 7 `
@@ -45,41 +45,41 @@ Runs\<RunId>\
   run.json
 ```
 
-GEO lookup is optional and disabled by default, but the runner will use an existing local `.\GEOIP.json` cache by default when present. To refresh or add missing cache entries, provide a token through config, the `DMARC_DASHBOARD_IPINFO_TOKEN` environment variable, or a SecretManagement secret named `DmarcDashboard-IpInfoToken`, then run with `-EnableGeoLookup`. The local `GEOIP.json` cache is ignored by git.
+GEO lookup is optional and disabled by default, but the runner will use an existing local `.\GEOIP.json` cache by default when present. To refresh or add missing cache entries, provide a token through config, the `DMARC_REPORTER_IPINFO_TOKEN` environment variable, or a SecretManagement secret named `DMARCReporter-IpInfoToken`, then run with `-EnableGeoLookup`. The local `GEOIP.json` cache is ignored by git.
 
 ## Setting The IPInfo API Token
 
-The recommended option is to store the token in an environment variable named `DMARC_DASHBOARD_IPINFO_TOKEN`:
+The recommended option is to store the token in an environment variable named `DMARC_REPORTER_IPINFO_TOKEN`:
 
 ```powershell
-[Environment]::SetEnvironmentVariable('DMARC_DASHBOARD_IPINFO_TOKEN','<your-ipinfo-token>','User')
+[Environment]::SetEnvironmentVariable('DMARC_REPORTER_IPINFO_TOKEN','<your-ipinfo-token>','User')
 ```
 
 Open a new PowerShell session after setting the user environment variable, then run:
 
 ```powershell
-Import-Module .\DmarcDashboard.psd1 -Force
-Invoke-DmarcDashboard -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
+Import-Module .\DMARCReporter.psd1 -Force
+Invoke-DMARCReporter -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
 ```
 
 For a current-session-only token, use:
 
 ```powershell
-$env:DMARC_DASHBOARD_IPINFO_TOKEN = '<your-ipinfo-token>'
-Invoke-DmarcDashboard -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
+$env:DMARC_REPORTER_IPINFO_TOKEN = '<your-ipinfo-token>'
+Invoke-DMARCReporter -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
 ```
 
 You can also use PowerShell SecretManagement:
 
 ```powershell
-Set-Secret -Name 'DmarcDashboard-IpInfoToken' -Secret '<your-ipinfo-token>'
-Invoke-DmarcDashboard -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
+Set-Secret -Name 'DMARCReporter-IpInfoToken' -Secret '<your-ipinfo-token>'
+Invoke-DMARCReporter -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
 ```
 
 For a one-off run, pass the token directly:
 
 ```powershell
-Invoke-DmarcDashboard `
+Invoke-DMARCReporter `
     -ConfigPath .\config\dmarc.config.json `
     -EnableGeoLookup `
     -GeoApiToken '<your-ipinfo-token>'
@@ -90,8 +90,8 @@ Avoid committing a real token to `config\dmarc.config.json`. If you still want t
 ```json
 {
   "EnableGeoLookup": true,
-  "GeoApiTokenEnvName": "DMARC_DASHBOARD_IPINFO_TOKEN",
-  "GeoApiTokenSecretName": "DmarcDashboard-IpInfoToken"
+  "GeoApiTokenEnvName": "DMARC_REPORTER_IPINFO_TOKEN",
+  "GeoApiTokenSecretName": "DMARCReporter-IpInfoToken"
 }
 ```
 
@@ -118,13 +118,13 @@ The codebase implements a local Windows pipeline:
 
 ## Repository Layout
 
-- `DmarcDashboard.psd1` / `DmarcDashboard.psm1`
+- `DMARCReporter.psd1` / `DMARCReporter.psm1`
   Module manifest and loader.
 
-- `Public\Invoke-DmarcDashboard.ps1`
+- `Public\Invoke-DMARCReporter.ps1`
   Main all-in-one public runner.
 
-- `Public\New-DmarcDashboardConfig.ps1`
+- `Public\New-DMARCReporterConfig.ps1`
   Creates a starter config file.
 
 - `Private\`
@@ -144,7 +144,7 @@ The codebase implements a local Windows pipeline:
 
 ## Key Parameters
 
-### `Invoke-DmarcDashboard`
+### `Invoke-DMARCReporter`
 
 - `-Days`
   How many days of Outlook mail to inspect.
@@ -203,7 +203,7 @@ The codebase implements a local Windows pipeline:
 
 ## Operational Notes
 
-- `Invoke-DmarcDashboard` generates reports and dashboard output in one run.
+- `Invoke-DMARCReporter` generates reports and dashboard output in one run.
 - `Get-Dmarc_emails.ps1` resolves Outlook folders by walking from `Inbox`, not from arbitrary mailbox roots.
 - Generated files are written under `Runs\` and are ignored by git.
 - GEO enrichment is optional. Reporting still works against `mastertable.json` if GEO data is unavailable.
@@ -211,7 +211,7 @@ The codebase implements a local Windows pipeline:
 ## Suggested Workflow
 
 1. Route DMARC aggregate reports into a dedicated Outlook folder.
-2. Run `Invoke-DmarcDashboard` on a schedule or manually.
+2. Run `Invoke-DMARCReporter` on a schedule or manually.
 3. Review `Runs\<RunId>\reports\*.csv` for exportable tabular data.
 4. Open `Runs\<RunId>\reports\dmarc-report.html` or `Runs\<RunId>\dashboard\dashboard.html` for local review.
 
@@ -219,3 +219,11 @@ The codebase implements a local Windows pipeline:
 
 - Outlook collection is Windows/desktop-Outlook specific because it depends on the COM object model.
 - GEO lookups depend on an external service and local token management.
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE`.
+
+## Attribution
+
+Some DMARC processing concepts and modified helper logic were inspired by Martijn van Geffen's MIT-licensed [`DMARC-report`](https://github.com/martijnvangeffen/DMARC-report) PowerShell project.

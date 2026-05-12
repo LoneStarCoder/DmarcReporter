@@ -1,4 +1,4 @@
-function Resolve-DmarcDashboardConfig {
+function Resolve-DMARCReporterConfig {
     [CmdletBinding()]
     param(
         [Parameter()]
@@ -8,7 +8,7 @@ function Resolve-DmarcDashboardConfig {
         [hashtable]$Overrides
     )
 
-    $resolved = Get-DmarcDashboardDefaultConfig
+    $resolved = Get-DMARCReporterDefaultConfig
 
     if (-not [string]::IsNullOrWhiteSpace($ConfigPath)) {
         $configFile = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ConfigPath)

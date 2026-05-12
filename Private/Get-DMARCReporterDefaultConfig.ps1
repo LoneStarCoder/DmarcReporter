@@ -1,4 +1,4 @@
-function Get-DmarcDashboardDefaultConfig {
+function Get-DMARCReporterDefaultConfig {
     [CmdletBinding()]
     [OutputType([System.Collections.Specialized.OrderedDictionary])]
     param()
@@ -16,8 +16,8 @@ function Get-DmarcDashboardDefaultConfig {
     $config['GeoProvider'] = 'ipinfo'
     $config['GeoApiBaseUri'] = 'https://ipinfo.io'
     $config['GeoApiToken'] = $null
-    $config['GeoApiTokenEnvName'] = 'DMARC_DASHBOARD_IPINFO_TOKEN'
-    $config['GeoApiTokenSecretName'] = 'DmarcDashboard-IpInfoToken'
+    $config['GeoApiTokenEnvName'] = 'DMARC_REPORTER_IPINFO_TOKEN'
+    $config['GeoApiTokenSecretName'] = 'DMARCReporter-IpInfoToken'
     $config['GeoDelayMilliseconds'] = 250
     $config['ForceGeoRefresh'] = $false
     $config['CreateCsvReports'] = $true

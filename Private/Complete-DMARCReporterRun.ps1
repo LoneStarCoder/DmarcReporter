@@ -1,4 +1,4 @@
-function Complete-DmarcDashboardRun {
+function Complete-DMARCReporterRun {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]

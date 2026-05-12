@@ -1,4 +1,4 @@
-function New-DmarcDashboardConfig {
+function New-DMARCReporterConfig {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter()]
@@ -24,11 +24,11 @@ function New-DmarcDashboardConfig {
         throw "Config file already exists: $resolvedPath. Use -Force to overwrite."
     }
 
-    $config = Get-DmarcDashboardDefaultConfig
+    $config = Get-DMARCReporterDefaultConfig
     $config.MailboxFolder = $MailboxFolder
     $config.OutputRoot = $OutputRoot
 
-    if ($PSCmdlet.ShouldProcess($resolvedPath, 'Create DMARC dashboard config')) {
+    if ($PSCmdlet.ShouldProcess($resolvedPath, 'Create DMARCReporter config')) {
         $config | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $resolvedPath -Encoding UTF8
     }
 

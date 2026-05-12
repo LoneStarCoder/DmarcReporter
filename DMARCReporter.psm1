@@ -14,6 +14,6 @@ foreach ($folder in @('Private', 'Public')) {
 }
 
 Export-ModuleMember -Function @(
-    'Invoke-DmarcDashboard',
-    'New-DmarcDashboardConfig'
+    'Invoke-DMARCReporter',
+    'New-DMARCReporterConfig'
 )

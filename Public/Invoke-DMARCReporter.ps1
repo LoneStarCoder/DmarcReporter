@@ -1,4 +1,4 @@
-function Invoke-DmarcDashboard {
+function Invoke-DMARCReporter {
     [CmdletBinding()]
     param(
         [Parameter()]
@@ -87,8 +87,8 @@ function Invoke-DmarcDashboard {
         $overrides.CreateDashboard = $false
     }
 
-    $config = Resolve-DmarcDashboardConfig -ConfigPath $ConfigPath -Overrides $overrides
-    $run = Initialize-DmarcDashboardRun -Config $config
+    $config = Resolve-DMARCReporterConfig -ConfigPath $ConfigPath -Overrides $overrides
+    $run = Initialize-DMARCReporterRun -Config $config
     $stages = New-Object System.Collections.Generic.List[object]
     $errors = New-Object System.Collections.Generic.List[object]
 
@@ -112,7 +112,7 @@ function Invoke-DmarcDashboard {
 
         $inputFiles = @(Get-ChildItem -LiteralPath $run.Paths.Input -File -ErrorAction SilentlyContinue)
         if ($inputFiles.Count -eq 0) {
-            $manifest = Complete-DmarcDashboardRun -ManifestPath $run.Paths.Manifest -Status Completed -Stages $stages.ToArray() -Errors $errors.ToArray()
+            $manifest = Complete-DMARCReporterRun -ManifestPath $run.Paths.Manifest -Status Completed -Stages $stages.ToArray() -Errors $errors.ToArray()
 
             return [pscustomobject]@{
                 RunId        = $run.RunId
@@ -224,7 +224,7 @@ function Invoke-DmarcDashboard {
             $stages.Add([pscustomobject]@{ Name = 'GenerateDashboard'; Result = $dashboardResult }) | Out-Null
         }
 
-        $manifest = Complete-DmarcDashboardRun -ManifestPath $run.Paths.Manifest -Status Completed -Stages $stages.ToArray() -Errors $errors.ToArray()
+        $manifest = Complete-DMARCReporterRun -ManifestPath $run.Paths.Manifest -Status Completed -Stages $stages.ToArray() -Errors $errors.ToArray()
 
         [pscustomobject]@{
             RunId        = $run.RunId
@@ -245,7 +245,7 @@ function Invoke-DmarcDashboard {
             Type    = $_.Exception.GetType().FullName
         }) | Out-Null
 
-        Complete-DmarcDashboardRun -ManifestPath $run.Paths.Manifest -Status Failed -Stages $stages.ToArray() -Errors $errors.ToArray() | Out-Null
+        Complete-DMARCReporterRun -ManifestPath $run.Paths.Manifest -Status Failed -Stages $stages.ToArray() -Errors $errors.ToArray() | Out-Null
         throw
     }
 }
