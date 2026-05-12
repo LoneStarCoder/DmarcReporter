@@ -543,11 +543,20 @@ function Export-DmarcXmlReports {
     }
 }
 
-if ($Overwrite) {
-    Export-DmarcMsgAttachments -Overwrite
-    Export-DmarcXmlReports -Overwrite
-}
-else {
-    Export-DmarcMsgAttachments
-    Export-DmarcXmlReports
+$msgResult = Export-DmarcMsgAttachments `
+    -SourceFolder $SourceFolder `
+    -Recurse:$Recurse `
+    -Overwrite:$Overwrite
+
+$xmlResult = Export-DmarcXmlReports `
+    -SourceFolder $SourceFolder `
+    -DestinationFolder $DestinationFolder `
+    -Recurse:$Recurse `
+    -Overwrite:$Overwrite
+
+[pscustomobject]@{
+    SourceFolder      = $SourceFolder
+    DestinationFolder = $DestinationFolder
+    MsgExtraction     = $msgResult
+    XmlExtraction     = $xmlResult
 }

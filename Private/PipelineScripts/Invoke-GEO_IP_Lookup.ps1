@@ -12,7 +12,7 @@ param(
     [string]$ApiBaseUri = "https://ipinfo.io",
 
     [Parameter(Mandatory = $false)]
-    [string]$ApiToken = "4b59850681e7a2",
+    [string]$ApiToken = "",
 
     [Parameter(Mandatory = $false)]
     [ValidateRange(0, 10000)]

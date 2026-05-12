@@ -1,18 +1,111 @@
-# DMARC2
+# DMARC3 / DmarcDashboard
 
 PowerShell tooling for pulling DMARC aggregate report attachments from Outlook, extracting XML payloads, normalizing them into JSON, enriching source IPs with GEO data, and generating CSV/HTML reporting artifacts.
+
+## Module Quick Start
+
+Import the module from the repo root:
+
+```powershell
+Import-Module .\DmarcDashboard.psd1 -Force
+```
+
+Create a starter config:
+
+```powershell
+New-DmarcDashboardConfig -Path .\config\dmarc.config.json -MailboxFolder 'Inbox\Ignore\dmarcreports'
+```
+
+Run the full pipeline:
+
+```powershell
+Invoke-DmarcDashboard -ConfigPath .\config\dmarc.config.json
+```
+
+Or run without a config file:
+
+```powershell
+Invoke-DmarcDashboard `
+    -MailboxFolder 'Inbox\Ignore\dmarcreports' `
+    -OutputRoot '.\Runs' `
+    -Days 7 `
+    -MessageFilter UnreadOnly
+```
+
+Each module run writes to an isolated folder:
+
+```text
+Runs\<RunId>\
+  input\
+  extracted\
+  normalized\
+  reports\
+  dashboard\
+  logs\
+  run.json
+```
+
+GEO lookup is optional and disabled by default, but the runner will use an existing local `.\GEOIP.json` cache by default when present. To refresh or add missing cache entries, provide a token through config, the `DMARC_DASHBOARD_IPINFO_TOKEN` environment variable, or a SecretManagement secret named `DmarcDashboard-IpInfoToken`, then run with `-EnableGeoLookup`. The local `GEOIP.json` cache is ignored by git.
+
+## Setting The IPInfo API Token
+
+The recommended option is to store the token in an environment variable named `DMARC_DASHBOARD_IPINFO_TOKEN`:
+
+```powershell
+[Environment]::SetEnvironmentVariable('DMARC_DASHBOARD_IPINFO_TOKEN','<your-ipinfo-token>','User')
+```
+
+Open a new PowerShell session after setting the user environment variable, then run:
+
+```powershell
+Import-Module .\DmarcDashboard.psd1 -Force
+Invoke-DmarcDashboard -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
+```
+
+For a current-session-only token, use:
+
+```powershell
+$env:DMARC_DASHBOARD_IPINFO_TOKEN = '<your-ipinfo-token>'
+Invoke-DmarcDashboard -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
+```
+
+You can also use PowerShell SecretManagement:
+
+```powershell
+Set-Secret -Name 'DmarcDashboard-IpInfoToken' -Secret '<your-ipinfo-token>'
+Invoke-DmarcDashboard -ConfigPath .\config\dmarc.config.json -EnableGeoLookup
+```
+
+For a one-off run, pass the token directly:
+
+```powershell
+Invoke-DmarcDashboard `
+    -ConfigPath .\config\dmarc.config.json `
+    -EnableGeoLookup `
+    -GeoApiToken '<your-ipinfo-token>'
+```
+
+Avoid committing a real token to `config\dmarc.config.json`. If you still want to configure token lookup there, set only the lookup names:
+
+```json
+{
+  "EnableGeoLookup": true,
+  "GeoApiTokenEnvName": "DMARC_DASHBOARD_IPINFO_TOKEN",
+  "GeoApiTokenSecretName": "DmarcDashboard-IpInfoToken"
+}
+```
 
 ## What This Repo Does
 
 The codebase implements a local Windows pipeline:
 
 1. Read DMARC report emails from an Outlook folder.
-2. Save report attachments into `.\dmarc_report_emails`.
-3. Extract `.zip`, `.gz`, and `.msg`-embedded archives into `.\dmarc_xml_exports`.
-4. Parse DMARC XML into `mastertable.json`.
-5. Optionally enrich source IPs into `GEOIP.json` and `mastertable.enriched.json`.
-6. Generate CSV summaries and a simple HTML report in `.\DmarcReport`.
-7. Generate a separate interactive dashboard in `.\DmarcDashboard\dashboard.html`.
+2. Save report attachments into the run `input\` folder.
+3. Extract `.zip`, `.gz`, and `.msg`-embedded archives into the run `extracted\` folder.
+4. Parse DMARC XML into `normalized\mastertable.json`.
+5. Optionally enrich source IPs into `normalized\GEOIP.json` and `normalized\mastertable.enriched.json`.
+6. Generate CSV summaries and a simple HTML report in the run `reports\` folder.
+7. Generate a separate interactive dashboard in the run `dashboard\dashboard.html`.
 
 ## Requirements
 
@@ -25,83 +118,38 @@ The codebase implements a local Windows pipeline:
 
 ## Repository Layout
 
-- `Invoke-DmarcReporter.ps1`
-  Orchestrates email collection, archive extraction, XML processing, and optional GEO/report generation.
+- `DmarcDashboard.psd1` / `DmarcDashboard.psm1`
+  Module manifest and loader.
 
-- `Get-Dmarc_emails.ps1`
-  Connects to Outlook through COM, filters messages by date/read state, and saves attachments locally.
+- `Public\Invoke-DmarcDashboard.ps1`
+  Main all-in-one public runner.
 
-- `Extract-Dmarc_reports.ps1`
-  Extracts attachments from `.msg` files and expands `.zip` / `.gz` DMARC report payloads into XML files.
+- `Public\New-DmarcDashboardConfig.ps1`
+  Creates a starter config file.
 
-- `Process-Dmarc_xml.ps1`
-  Parses the XML exports and writes the normalized DMARC record set to `mastertable.json`.
+- `Private\`
+  Internal module helpers for config, run initialization, token lookup, and pipeline orchestration.
 
-- `Invoke-GEO_IP_Lookup.ps1`
-  Looks up unique source IPs and writes/updates `GEOIP.json`.
+- `Private\PipelineScripts\`
+  Private implementation backends for Outlook collection, archive extraction, XML normalization, GEO enrichment, report generation, and dashboard rendering.
 
-- `Merge-GEOIntoMasterTable.ps1`
-  Joins `GEOIP.json` back into `mastertable.json` and writes `mastertable.enriched.json`.
+- `config\config.example.json`
+  Example config. Local `config\*.json` files are ignored by git except the example.
 
-- `New-DMarcReport.ps1`
-  Produces flat CSV outputs and a basic HTML report under `.\DmarcReport`.
+- `tests\`
+  Pester tests and local fixtures.
 
-- `Generate-Dashboard.ps1`
-  Produces the richer standalone HTML dashboard under `.\DmarcDashboard`.
-
-- `dmarc_report_emails\`
-  Raw saved attachments from Outlook.
-
-- `dmarc_xml_exports\`
-  Extracted DMARC XML payloads.
-
-- `DmarcReport\`
-  Generated CSV and HTML reporting outputs.
-
-- `DmarcDashboard\`
-  Generated interactive dashboard output.
-
-## Quick Start
-
-Collect unread DMARC report attachments from a dedicated Outlook folder and generate the reporting set:
-
-```powershell
-.\Invoke-DmarcReporter.ps1 `
-    -Days 7 `
-    -EmailFolderPath 'Inbox\Ignore\dmarcreports' `
-    -MessageFilter UnreadOnly `
-    -MarkAsRead $true `
-    -GenerateReports $true
-```
-
-Generate or refresh the dashboard separately:
-
-```powershell
-.\Generate-Dashboard.ps1
-```
-
-## Manual Pipeline
-
-If you want to run each stage independently:
-
-```powershell
-.\Get-Dmarc_emails.ps1 -Days 7 -EmailFolderPath 'Inbox\Ignore\dmarcreports'
-.\Extract-Dmarc_reports.ps1
-.\Process-Dmarc_xml.ps1
-.\Invoke-GEO_IP_Lookup.ps1 -ApiToken '<your token>'
-.\Merge-GEOIntoMasterTable.ps1
-.\New-DMarcReport.ps1
-.\Generate-Dashboard.ps1
-```
+- `Runs\`
+  Generated run output. Ignored by git.
 
 ## Key Parameters
 
-### `Invoke-DmarcReporter.ps1`
+### `Invoke-DmarcDashboard`
 
 - `-Days`
   How many days of Outlook mail to inspect.
 
-- `-EmailFolderPath`
+- `-MailboxFolder`
   Outlook folder path. Current implementation expects a path starting with `Inbox\`.
 
 - `-MessageFilter`
@@ -110,67 +158,32 @@ If you want to run each stage independently:
 - `-MarkAsRead`
   Marks processed unread messages as read after attachment handling.
 
-- `-GenerateReports`
-  Runs GEO lookup, GEO merge, and `New-DMarcReport.ps1`.
-
-### `Get-Dmarc_emails.ps1`
-
-- `-DestinationFolder`
-  Where saved attachments are written. Default: `.\dmarc_report_emails`
-
 - `-ExistingFileAction`
   `Skip` or `Overwrite`
 
-### `Invoke-GEO_IP_Lookup.ps1`
+- `-EnableGeoLookup`
+  Refreshes or creates the local GEO cache and enriches the run output.
 
-- `-InputJsonPath`
-  Source record file. Default: `.\mastertable.json`
+- `-GeoApiToken`
+  One-off IPInfo token value. Prefer environment variables or SecretManagement for regular use.
 
-- `-OutputJsonPath`
-  GEO cache file. Default: `.\GEOIP.json`
-
-- `-ApiBaseUri`
-  GEO provider base URI. Default is IPInfo.
-
-- `-ApiToken`
-  Token used for the GEO lookup provider.
-
-- `-ForceRefresh`
-  Re-query IPs already present in `GEOIP.json`.
-
-### `New-DMarcReport.ps1`
-
-- `-InputJsonPath`
-  Prefers `.\mastertable.enriched.json` by default.
-
-- `-OutputDirectory`
-  Output folder for CSV/HTML artifacts. Default: `.\DmarcReport`
-
-### `Generate-Dashboard.ps1`
-
-- `-InputJsonPath`
-  Defaults to `.\mastertable.enriched.json` when present, otherwise `.\mastertable.json`
-
-- `-OutputPath`
-  Default: `.\DmarcDashboard\dashboard.html`
-
-- `-Title`
-  Dashboard page title.
+- `-SkipReports` / `-SkipDashboard`
+  Skips report or dashboard generation when only normalized data is needed.
 
 ## Generated Outputs
 
 ### Core data
 
-- `mastertable.json`
+- `normalized\mastertable.json`
   Parsed DMARC records.
 
-- `GEOIP.json`
+- `normalized\GEOIP.json`
   Cached GEO lookups by source IP.
 
-- `mastertable.enriched.json`
+- `normalized\mastertable.enriched.json`
   Parsed DMARC records with GEO fields merged in.
 
-### `DmarcReport`
+### `reports`
 
 - `dmarc-detail-normalized.csv`
 - `dmarc-mastertable-raw.csv`
@@ -184,27 +197,25 @@ If you want to run each stage independently:
 - `dmarc-auth-failures.csv`
 - `dmarc-report.html`
 
-### `DmarcDashboard`
+### `dashboard`
 
 - `dashboard.html`
 
 ## Operational Notes
 
-- `Generate-Dashboard.ps1` is not currently called by `Invoke-DmarcReporter.ps1`. Run it separately when you want the dashboard refreshed.
+- `Invoke-DmarcDashboard` generates reports and dashboard output in one run.
 - `Get-Dmarc_emails.ps1` resolves Outlook folders by walking from `Inbox`, not from arbitrary mailbox roots.
-- Generated files are written in place and are meant to be treated as build artifacts or working data.
+- Generated files are written under `Runs\` and are ignored by git.
 - GEO enrichment is optional. Reporting still works against `mastertable.json` if GEO data is unavailable.
 
 ## Suggested Workflow
 
 1. Route DMARC aggregate reports into a dedicated Outlook folder.
-2. Run `Invoke-DmarcReporter.ps1` on a schedule or manually.
-3. Run `Generate-Dashboard.ps1` after report generation if you need the dashboard refreshed.
-4. Review `DmarcReport\*.csv` for exportable tabular data.
-5. Open `DmarcReport\dmarc-report.html` or `DmarcDashboard\dashboard.html` for local review.
+2. Run `Invoke-DmarcDashboard` on a schedule or manually.
+3. Review `Runs\<RunId>\reports\*.csv` for exportable tabular data.
+4. Open `Runs\<RunId>\reports\dmarc-report.html` or `Runs\<RunId>\dashboard\dashboard.html` for local review.
 
 ## Current Gaps
 
-- No automated test suite is included.
 - Outlook collection is Windows/desktop-Outlook specific because it depends on the COM object model.
 - GEO lookups depend on an external service and local token management.

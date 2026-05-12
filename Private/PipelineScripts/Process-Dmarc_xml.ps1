@@ -1,5 +1,17 @@
+[CmdletBinding()]
+param(
+    [Parameter()]
+    [string]$SourceFolder = ".\dmarc_xml_exports",
 
-[array]$xmlfiles = Get-ChildItem -Path ".\dmarc_xml_exports" -Filter "*.xml"
+    [Parameter()]
+    [string]$OutputJsonPath = ".\mastertable.json"
+)
+
+if (-not (Test-Path -LiteralPath $SourceFolder -PathType Container)) {
+    throw "Source folder not found: $SourceFolder"
+}
+
+[array]$xmlfiles = Get-ChildItem -LiteralPath $SourceFolder -Filter "*.xml" -File
 
 function ConvertTo-Array {
     param(
@@ -195,4 +207,16 @@ foreach ($record in $xml) {
     }
 }
 
-$mastertable | ConvertTo-Json -Depth 10 | Set-Content -Path '.\mastertable.json' -Encoding UTF8
+$outputDirectory = Split-Path -Path $OutputJsonPath -Parent
+if (-not [string]::IsNullOrWhiteSpace($outputDirectory) -and -not (Test-Path -LiteralPath $outputDirectory -PathType Container)) {
+    New-Item -Path $outputDirectory -ItemType Directory -Force | Out-Null
+}
+
+$mastertable | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath $OutputJsonPath -Encoding UTF8
+
+[pscustomobject]@{
+    SourceFolder    = (Resolve-Path -LiteralPath $SourceFolder).Path
+    OutputJsonPath  = (Resolve-Path -LiteralPath $OutputJsonPath).Path
+    XmlFilesFound   = $xmlfiles.Count
+    RecordsExported = $mastertable.Count
+}

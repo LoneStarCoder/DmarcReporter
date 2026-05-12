@@ -62,10 +62,10 @@ if (-not (Test-Path -LiteralPath $GeoIpJsonPath)) {
 }
 
 $masterTableRaw = Get-Content -LiteralPath $MasterTableJsonPath -Raw
-$masterTableRows = ConvertTo-Array -Value ($masterTableRaw | ConvertFrom-Json)
+[array]$masterTableRows = ConvertTo-Array -Value ($masterTableRaw | ConvertFrom-Json)
 
 $geoIpRaw = Get-Content -LiteralPath $GeoIpJsonPath -Raw
-$geoIpRows = ConvertTo-Array -Value ($geoIpRaw | ConvertFrom-Json)
+[array]$geoIpRows = ConvertTo-Array -Value ($geoIpRaw | ConvertFrom-Json)
 
 $geoByIp = @{}
 foreach ($geoRow in $geoIpRows) {
