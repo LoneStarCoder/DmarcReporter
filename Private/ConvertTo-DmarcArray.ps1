@@ -1,5 +1,6 @@
 function ConvertTo-DmarcArray {
     [CmdletBinding()]
+    [OutputType([object[]])]
     param(
         [AllowNull()]
         [object]$Value

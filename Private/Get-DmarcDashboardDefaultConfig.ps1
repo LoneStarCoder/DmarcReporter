@@ -1,27 +1,28 @@
 function Get-DmarcDashboardDefaultConfig {
     [CmdletBinding()]
+    [OutputType([System.Collections.Specialized.OrderedDictionary])]
     param()
 
-    [ordered]@{
-        MailboxFolder         = $null
-        OutputRoot            = '.\Runs'
-        Days                  = 7
-        MessageFilter         = 'UnreadOnly'
-        MarkAsRead            = $false
-        ExistingFileAction    = 'Skip'
-        EnableGeoLookup       = $false
-        UseGeoCache           = $true
-        GeoCachePath          = '.\GEOIP.json'
-        GeoProvider           = 'ipinfo'
-        GeoApiBaseUri         = 'https://ipinfo.io'
-        GeoApiToken           = $null
-        GeoApiTokenEnvName    = 'DMARC_DASHBOARD_IPINFO_TOKEN'
-        GeoApiTokenSecretName = 'DmarcDashboard-IpInfoToken'
-        GeoDelayMilliseconds  = 250
-        ForceGeoRefresh       = $false
-        CreateCsvReports      = $true
-        CreateHtmlReport      = $true
-        CreateDashboard       = $true
-        KeepRawAttachments    = $true
-    }
+    $config = [System.Collections.Specialized.OrderedDictionary]::new()
+    $config['MailboxFolder'] = $null
+    $config['OutputRoot'] = '.\Runs'
+    $config['Days'] = 7
+    $config['MessageFilter'] = 'UnreadOnly'
+    $config['MarkAsRead'] = $false
+    $config['ExistingFileAction'] = 'Skip'
+    $config['EnableGeoLookup'] = $false
+    $config['UseGeoCache'] = $true
+    $config['GeoCachePath'] = '.\GEOIP.json'
+    $config['GeoProvider'] = 'ipinfo'
+    $config['GeoApiBaseUri'] = 'https://ipinfo.io'
+    $config['GeoApiToken'] = $null
+    $config['GeoApiTokenEnvName'] = 'DMARC_DASHBOARD_IPINFO_TOKEN'
+    $config['GeoApiTokenSecretName'] = 'DmarcDashboard-IpInfoToken'
+    $config['GeoDelayMilliseconds'] = 250
+    $config['ForceGeoRefresh'] = $false
+    $config['CreateCsvReports'] = $true
+    $config['CreateHtmlReport'] = $true
+    $config['CreateDashboard'] = $true
+    $config['KeepRawAttachments'] = $true
+    return $config
 }

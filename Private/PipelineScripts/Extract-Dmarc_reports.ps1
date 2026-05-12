@@ -13,7 +13,7 @@
         [switch]$Overwrite
     )
 
-function Export-DmarcMsgAttachments {
+function Export-DmarcMsgAttachment {
     [CmdletBinding()]
     param(
         [Parameter()]
@@ -222,7 +222,7 @@ function Export-DmarcMsgAttachments {
 }
 
 
-function Export-DmarcXmlReports {
+function Export-DmarcXmlReport {
     [CmdletBinding()]
     param(
         [Parameter()]
@@ -370,7 +370,7 @@ function Export-DmarcXmlReports {
             }
         }
 
-        function Export-ZipXmlFiles {
+        function Export-ZipXmlFile {
             [CmdletBinding()]
             param(
                 [Parameter(Mandatory = $true)]
@@ -508,7 +508,7 @@ function Export-DmarcXmlReports {
 
         foreach ($file in $files) {
             if ($file.Name.EndsWith('.zip', [System.StringComparison]::OrdinalIgnoreCase)) {
-                $zipResults = Export-ZipXmlFiles `
+                $zipResults = Export-ZipXmlFile `
                     -File $file `
                     -DestinationDirectory $resolvedDestinationFolder `
                     -Overwrite:$Overwrite
@@ -543,12 +543,12 @@ function Export-DmarcXmlReports {
     }
 }
 
-$msgResult = Export-DmarcMsgAttachments `
+$msgResult = Export-DmarcMsgAttachment `
     -SourceFolder $SourceFolder `
     -Recurse:$Recurse `
     -Overwrite:$Overwrite
 
-$xmlResult = Export-DmarcXmlReports `
+$xmlResult = Export-DmarcXmlReport `
     -SourceFolder $SourceFolder `
     -DestinationFolder $DestinationFolder `
     -Recurse:$Recurse `

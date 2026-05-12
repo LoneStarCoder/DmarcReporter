@@ -1,5 +1,6 @@
 function Get-DmarcGeoApiToken {
     [CmdletBinding()]
+    [OutputType([string])]
     param(
         [AllowNull()]
         [string]$ExplicitToken,

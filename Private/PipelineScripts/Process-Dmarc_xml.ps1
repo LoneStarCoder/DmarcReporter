@@ -90,7 +90,7 @@ function Get-IpVersion {
     return $null
 }
 
-function Get-DkimAuthRecords {
+function Get-DkimAuthRecord {
     param(
         [AllowNull()]
         [object]$DkimNodes
@@ -113,7 +113,7 @@ function Get-DkimAuthRecords {
     return @($records)
 }
 
-function Get-PolicyOverrideReasons {
+function Get-PolicyOverrideReason {
     param(
         [AllowNull()]
         [object]$ReasonNodes
@@ -156,13 +156,8 @@ foreach ($record in $xml) {
     $processDate = $reportDateBeginUtc
 
     foreach ($domainrecord in (ConvertTo-Array -Value $record.feedback.record)) {
-        $hostname = $null
-        $ip = $null
-        $sleepcounter = $null
-
-        $ip = $domainrecord.row.source_ip
-        $dkimAuthRecords = Get-DkimAuthRecords -DkimNodes $domainrecord.auth_results.dkim
-        $policyOverrideReasons = Get-PolicyOverrideReasons -ReasonNodes $domainrecord.row.policy_evaluated.reason
+        $dkimAuthRecords = Get-DkimAuthRecord -DkimNodes $domainrecord.auth_results.dkim
+        $policyOverrideReasons = Get-PolicyOverrideReason -ReasonNodes $domainrecord.row.policy_evaluated.reason
         $sourceIpCount = ConvertTo-NullableInt -Value $domainrecord.row.count
         $policyPct = ConvertTo-NullableInt -Value $policyPublished.pct
 

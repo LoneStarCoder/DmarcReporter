@@ -26,26 +26,26 @@
 #endregion
 
 #region Do Work
-Write-Host "Attempting to get Attachments from Emails" -ForegroundColor Green
+Write-Information "Attempting to get attachments from emails"
 $Get_Dmarc_emails_Results = .\Get-Dmarc_emails.ps1 -Days $Days -EmailFolderPath $EmailFolderPath -MessageFilter $MessageFilter -MarkAsRead $MarkAsRead -ExistingFileAction $ExistingFileAction
-Write-Host "Email Results" -ForegroundColor Green
+Write-Information "Email results"
 $Get_Dmarc_emails_Results
 if (($Get_Dmarc_emails_Results.SavedAttachments) -ge 1) {
 
-    Write-Host "Extracting xml from Attachments" -ForegroundColor Green
+    Write-Information "Extracting XML from attachments"
     .\Extract-Dmarc_reports.ps1
 
-    Write-Host "Processing xml Files"  -ForegroundColor Green
+    Write-Information "Processing XML files"
     .\Process-Dmarc_xml.ps1
 
     if ($GenerateReports) {
-     Write-Host "Updating GEO IP Cache" -ForegroundColor Green
+     Write-Information "Updating GEO IP cache"
      .\Invoke-GEO_IP_Lookup.ps1
 
-     Write-Host "Merging GEO IP Data Into Master Table" -ForegroundColor Green
+     Write-Information "Merging GEO IP data into master table"
      .\Merge-GEOIntoMasterTable.ps1
 
-     Write-Host "Generating Reports"
+     Write-Information "Generating reports"
      .\New-DMarcReport.ps1
     }
 }

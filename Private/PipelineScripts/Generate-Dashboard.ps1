@@ -1,4 +1,4 @@
-param(
+﻿param(
     [Parameter(Mandatory = $false)]
     [string]$InputJsonPath,
 
@@ -196,7 +196,7 @@ function Get-MessageSum {
     return $sum
 }
 
-function Escape-Html {
+function ConvertTo-HtmlEncodedText {
     param(
         [AllowNull()]
         [object]$Text
@@ -254,7 +254,7 @@ function Get-DateLabel {
     }
 }
 
-function New-GroupSummary {
+function Get-GroupSummary {
     param(
         [Parameter(Mandatory = $true)]
         [AllowNull()]
@@ -299,7 +299,7 @@ function New-GroupSummary {
         Sort-Object -Property MessageCount -Descending
 }
 
-function New-MetricCardHtml {
+function ConvertTo-MetricCardHtml {
     param(
         [string]$Label,
         [string]$Value,
@@ -309,14 +309,14 @@ function New-MetricCardHtml {
 
     return @"
 <article class="metric-card tone-$Tone">
-  <div class="metric-label">$(Escape-Html $Label)</div>
-  <div class="metric-value">$(Escape-Html $Value)</div>
-  <div class="metric-hint">$(Escape-Html $Hint)</div>
+  <div class="metric-label">$(ConvertTo-HtmlEncodedText $Label)</div>
+  <div class="metric-value">$(ConvertTo-HtmlEncodedText $Value)</div>
+  <div class="metric-hint">$(ConvertTo-HtmlEncodedText $Hint)</div>
 </article>
 "@
 }
 
-function New-LeaderboardHtml {
+function ConvertTo-LeaderboardHtml {
     param(
         [Parameter(Mandatory = $true)]
         [string]$Title,
@@ -342,7 +342,7 @@ function New-LeaderboardHtml {
         return @"
 <section class="panel">
   <div class="panel-head">
-    <h2>$(Escape-Html $Title)</h2>
+    <h2>$(ConvertTo-HtmlEncodedText $Title)</h2>
   </div>
   <div class="empty-state">No data available.</div>
 </section>
@@ -366,15 +366,15 @@ function New-LeaderboardHtml {
         $metaParts = foreach ($metaProperty in $MetaProperties) {
             $metaValue = $row.$metaProperty
             if (-not [string]::IsNullOrWhiteSpace([string]$metaValue)) {
-                Escape-Html $metaValue
+                ConvertTo-HtmlEncodedText $metaValue
             }
         }
 
         @"
 <div class="leader-row">
   <div class="leader-row-head">
-    <div class="leader-label">$(Escape-Html $label)</div>
-    <div class="leader-value">$(Escape-Html (Format-Number $value))</div>
+    <div class="leader-label">$(ConvertTo-HtmlEncodedText $label)</div>
+    <div class="leader-value">$(ConvertTo-HtmlEncodedText (Format-Number $value))</div>
   </div>
   <div class="leader-meta">$([string]::Join(' | ', @($metaParts)))</div>
   <div class="leader-bar-track"><div class="leader-bar" style="width: $width%"></div></div>
@@ -385,7 +385,7 @@ function New-LeaderboardHtml {
     return @"
 <section class="panel">
   <div class="panel-head">
-    <h2>$(Escape-Html $Title)</h2>
+    <h2>$(ConvertTo-HtmlEncodedText $Title)</h2>
   </div>
   <div class="leaderboard">
     $([string]::Join("`n", @($rowsHtml)))
@@ -394,7 +394,7 @@ function New-LeaderboardHtml {
 "@
 }
 
-function New-TableHtml {
+function ConvertTo-TableHtml {
     param(
         [Parameter(Mandatory = $true)]
         [string]$Title,
@@ -419,8 +419,8 @@ function New-TableHtml {
 <section class="panel">
   <div class="panel-head">
     <div>
-      <h2>$(Escape-Html $Title)</h2>
-      <p class="panel-subtitle">$(Escape-Html $Subtitle)</p>
+      <h2>$(ConvertTo-HtmlEncodedText $Title)</h2>
+      <p class="panel-subtitle">$(ConvertTo-HtmlEncodedText $Subtitle)</p>
     </div>
   </div>
   <div class="empty-state">No data available.</div>
@@ -429,7 +429,7 @@ function New-TableHtml {
     }
 
     $headerHtml = foreach ($column in $Columns) {
-        "<th>$(Escape-Html $column.Label)</th>"
+        "<th>$(ConvertTo-HtmlEncodedText $column.Label)</th>"
     }
 
     $bodyHtml = foreach ($row in $items) {
@@ -443,7 +443,7 @@ function New-TableHtml {
                 $displayValue = $rawValue
             }
 
-            "<td>$(Escape-Html $displayValue)</td>"
+            "<td>$(ConvertTo-HtmlEncodedText $displayValue)</td>"
         }
 
         "<tr>$([string]::Join('', @($cells)))</tr>"
@@ -453,8 +453,8 @@ function New-TableHtml {
 <section class="panel">
   <div class="panel-head">
     <div>
-      <h2>$(Escape-Html $Title)</h2>
-      <p class="panel-subtitle">$(Escape-Html $Subtitle)</p>
+      <h2>$(ConvertTo-HtmlEncodedText $Title)</h2>
+      <p class="panel-subtitle">$(ConvertTo-HtmlEncodedText $Subtitle)</p>
     </div>
   </div>
   <div class="table-wrap">
@@ -469,7 +469,7 @@ function New-TableHtml {
 "@
 }
 
-function New-DistributionHtml {
+function ConvertTo-DistributionHtml {
     param(
         [Parameter(Mandatory = $true)]
         [string]$Title,
@@ -488,16 +488,16 @@ function New-DistributionHtml {
 
     $barsHtml = foreach ($segment in $Segments) {
         $width = [math]::Round(($segment.Value / $total) * 100, 2)
-        "<div class=""stack-segment tone-$($segment.Tone)"" style=""width: $width%"" title=""$(Escape-Html $segment.Label): $(Escape-Html (Format-Number $segment.Value))""></div>"
+        "<div class=""stack-segment tone-$($segment.Tone)"" style=""width: $width%"" title=""$(ConvertTo-HtmlEncodedText $segment.Label): $(ConvertTo-HtmlEncodedText (Format-Number $segment.Value))""></div>"
     }
 
     $legendHtml = foreach ($segment in $Segments) {
         @"
 <div class="legend-item">
   <span class="legend-swatch tone-$($segment.Tone)"></span>
-  <span class="legend-label">$(Escape-Html $segment.Label)</span>
-  <span class="legend-value">$(Escape-Html (Format-Number $segment.Value))</span>
-  <span class="legend-percent">$(Escape-Html (Format-Percent $segment.Value $total))</span>
+  <span class="legend-label">$(ConvertTo-HtmlEncodedText $segment.Label)</span>
+  <span class="legend-value">$(ConvertTo-HtmlEncodedText (Format-Number $segment.Value))</span>
+  <span class="legend-percent">$(ConvertTo-HtmlEncodedText (Format-Percent $segment.Value $total))</span>
 </div>
 "@
     }
@@ -505,7 +505,7 @@ function New-DistributionHtml {
     return @"
 <section class="panel">
   <div class="panel-head">
-    <h2>$(Escape-Html $Title)</h2>
+    <h2>$(ConvertTo-HtmlEncodedText $Title)</h2>
   </div>
   <div class="stack-chart">
     $([string]::Join('', @($barsHtml)))
@@ -655,55 +655,54 @@ $uniqueReporters = @($normalized | Select-Object -ExpandProperty OrgName -Unique
 $uniquePolicyDomains = @($normalized | Select-Object -ExpandProperty DmarcDomain -Unique).Count
 $uniqueHeaderFrom = @($normalized | Select-Object -ExpandProperty HeaderFrom -Unique).Count
 
-$policySummary = New-GroupSummary -Rows @($normalized) -GroupProperties @("PolicyP", "PolicyAdkim", "PolicyAspf", "PolicyPct")
-$orgSummary = New-GroupSummary -Rows @($normalized) -GroupProperties @("OrgName")
-$ipSummary = New-GroupSummary -Rows @($normalized) -GroupProperties @("SourceIp", "GeoCountry", "GeoCity", "GeoOrg")
-$countrySummary = New-GroupSummary -Rows @($normalized | Where-Object { $_.GeoCountry }) -GroupProperties @("GeoCountry")
-$citySummary = New-GroupSummary -Rows @($normalized | Where-Object { $_.GeoCity }) -GroupProperties @("GeoCity", "GeoRegion", "GeoCountry")
-$spfDomainSummary = New-GroupSummary -Rows @($normalized | Where-Object { $_.SpfDomain }) -GroupProperties @("SpfDomain", "SpfResult")
-$dkimDomainSummary = New-GroupSummary -Rows @($normalized | Where-Object { $_.DkimDomain }) -GroupProperties @("DkimDomain", "DkimResult")
-$headerFromSummary = New-GroupSummary -Rows @($normalized | Where-Object { $_.HeaderFrom }) -GroupProperties @("HeaderFrom")
-$reportDaySummary = New-GroupSummary -Rows @($normalized) -GroupProperties @("ReportDay")
-$geoOrgSummary = New-GroupSummary -Rows @($normalized | Where-Object { $_.GeoOrg }) -GroupProperties @("GeoOrg", "GeoCountry")
-$overrideSummary = New-GroupSummary -Rows @($normalized | Where-Object { $_.PolicyOverrideType }) -GroupProperties @("PolicyOverrideType")
+$policySummary = Get-GroupSummary -Rows @($normalized) -GroupProperties @("PolicyP", "PolicyAdkim", "PolicyAspf", "PolicyPct")
+$orgSummary = Get-GroupSummary -Rows @($normalized) -GroupProperties @("OrgName")
+$ipSummary = Get-GroupSummary -Rows @($normalized) -GroupProperties @("SourceIp", "GeoCountry", "GeoCity", "GeoOrg")
+$countrySummary = Get-GroupSummary -Rows @($normalized | Where-Object { $_.GeoCountry }) -GroupProperties @("GeoCountry")
+$citySummary = Get-GroupSummary -Rows @($normalized | Where-Object { $_.GeoCity }) -GroupProperties @("GeoCity", "GeoRegion", "GeoCountry")
+$spfDomainSummary = Get-GroupSummary -Rows @($normalized | Where-Object { $_.SpfDomain }) -GroupProperties @("SpfDomain", "SpfResult")
+$dkimDomainSummary = Get-GroupSummary -Rows @($normalized | Where-Object { $_.DkimDomain }) -GroupProperties @("DkimDomain", "DkimResult")
+$headerFromSummary = Get-GroupSummary -Rows @($normalized | Where-Object { $_.HeaderFrom }) -GroupProperties @("HeaderFrom")
+$reportDaySummary = Get-GroupSummary -Rows @($normalized) -GroupProperties @("ReportDay")
+$geoOrgSummary = Get-GroupSummary -Rows @($normalized | Where-Object { $_.GeoOrg }) -GroupProperties @("GeoOrg", "GeoCountry")
+$overrideSummary = Get-GroupSummary -Rows @($normalized | Where-Object { $_.PolicyOverrideType }) -GroupProperties @("PolicyOverrideType")
 
 $highRiskRows = $normalized | Sort-Object -Property @{ Expression = "RiskScore"; Descending = $true }, @{ Expression = "SourceIpCount"; Descending = $true }
 $quarantineRows = $normalized | Where-Object { $_.WouldQuarantine } | Sort-Object -Property @{ Expression = "SourceIpCount"; Descending = $true }, @{ Expression = "RiskScore"; Descending = $true }
 $internationalRows = $normalized | Where-Object { $_.GeoCountry -and $_.GeoCountry -ne "US" } | Sort-Object -Property SourceIpCount -Descending
-$authMatrix = New-GroupSummary -Rows @($normalized) -GroupProperties @("DmarcSpf", "DmarcDkim", "DmarcDisposition")
-$riskBandSummary = New-GroupSummary -Rows @($normalized) -GroupProperties @("RiskBand")
+$authMatrix = Get-GroupSummary -Rows @($normalized) -GroupProperties @("DmarcSpf", "DmarcDkim", "DmarcDisposition")
 
 $metricsHtml = @(
-    (New-MetricCardHtml -Label "Messages Observed" -Value (Format-Number $totalMessages) -Hint "$totalRecords aggregate rows" -Tone "default"),
-    (New-MetricCardHtml -Label "DMARC Aligned" -Value (Format-Percent $alignedMessages $totalMessages) -Hint "$(Format-Number $alignedMessages) messages" -Tone "good"),
-    (New-MetricCardHtml -Label "Would Quarantine" -Value (Format-Percent $quarantineMessages $totalMessages) -Hint "$(Format-Number $quarantineMessages) messages" -Tone "danger"),
-    (New-MetricCardHtml -Label "Critical Risk Volume" -Value (Format-Number $criticalMessages) -Hint "weighted high-risk messages" -Tone "danger"),
-    (New-MetricCardHtml -Label "Unique Source IPs" -Value (Format-Number $uniqueSourceIps) -Hint "$uniqueReporters reporting orgs" -Tone "default"),
-    (New-MetricCardHtml -Label "Geo Coverage" -Value $geoCoverage -Hint "$(Format-Number $geoCountries.Count) countries resolved" -Tone "info"),
-    (New-MetricCardHtml -Label "Policy Domains" -Value (Format-Number $uniquePolicyDomains) -Hint "$(Format-Number $uniqueHeaderFrom) header-from identities" -Tone "default"),
-    (New-MetricCardHtml -Label "Report Window" -Value ("{0} to {1}" -f (Get-DateLabel $dateRangeStart), (Get-DateLabel $dateRangeEnd)) -Hint (Split-Path -Path $resolvedInputJsonPath -Leaf) -Tone "default")
+    (ConvertTo-MetricCardHtml -Label "Messages Observed" -Value (Format-Number $totalMessages) -Hint "$totalRecords aggregate rows" -Tone "default"),
+    (ConvertTo-MetricCardHtml -Label "DMARC Aligned" -Value (Format-Percent $alignedMessages $totalMessages) -Hint "$(Format-Number $alignedMessages) messages" -Tone "good"),
+    (ConvertTo-MetricCardHtml -Label "Would Quarantine" -Value (Format-Percent $quarantineMessages $totalMessages) -Hint "$(Format-Number $quarantineMessages) messages" -Tone "danger"),
+    (ConvertTo-MetricCardHtml -Label "Critical Risk Volume" -Value (Format-Number $criticalMessages) -Hint "weighted high-risk messages" -Tone "danger"),
+    (ConvertTo-MetricCardHtml -Label "Unique Source IPs" -Value (Format-Number $uniqueSourceIps) -Hint "$uniqueReporters reporting orgs" -Tone "default"),
+    (ConvertTo-MetricCardHtml -Label "Geo Coverage" -Value $geoCoverage -Hint "$(Format-Number $geoCountries.Count) countries resolved" -Tone "info"),
+    (ConvertTo-MetricCardHtml -Label "Policy Domains" -Value (Format-Number $uniquePolicyDomains) -Hint "$(Format-Number $uniqueHeaderFrom) header-from identities" -Tone "default"),
+    (ConvertTo-MetricCardHtml -Label "Report Window" -Value ("{0} to {1}" -f (Get-DateLabel $dateRangeStart), (Get-DateLabel $dateRangeEnd)) -Hint (Split-Path -Path $resolvedInputJsonPath -Leaf) -Tone "default")
 )
 
-$overviewDistributionHtml = New-DistributionHtml -Title "Authentication Posture" -Segments @(
+$overviewDistributionHtml = ConvertTo-DistributionHtml -Title "Authentication Posture" -Segments @(
     @{ Label = "Aligned"; Value = [int]$alignedMessages; Tone = "good" },
     @{ Label = "Not Aligned"; Value = [int]$notAlignedMessages; Tone = "danger" }
 )
 
-$authDistributionHtml = New-DistributionHtml -Title "SPF vs DKIM Outcomes" -Segments @(
+$authDistributionHtml = ConvertTo-DistributionHtml -Title "SPF vs DKIM Outcomes" -Segments @(
     @{ Label = "SPF Pass"; Value = [int]$spfPassMessages; Tone = "good" },
     @{ Label = "SPF Fail"; Value = [int]$spfFailMessages; Tone = "warning" },
     @{ Label = "DKIM Pass"; Value = [int]$dkimPassMessages; Tone = "info" },
     @{ Label = "DKIM Fail"; Value = [int]$dkimFailMessages; Tone = "danger" }
 )
 
-$riskDistributionHtml = New-DistributionHtml -Title "Risk Band Distribution" -Segments @(
+$riskDistributionHtml = ConvertTo-DistributionHtml -Title "Risk Band Distribution" -Segments @(
     @{ Label = "Critical"; Value = [int](Get-MessageSum -Rows @($normalized | Where-Object { $_.RiskBand -eq "Critical" })); Tone = "danger" },
     @{ Label = "High"; Value = [int](Get-MessageSum -Rows @($normalized | Where-Object { $_.RiskBand -eq "High" })); Tone = "warning" },
     @{ Label = "Elevated"; Value = [int](Get-MessageSum -Rows @($normalized | Where-Object { $_.RiskBand -eq "Elevated" })); Tone = "info" },
     @{ Label = "Low"; Value = [int](Get-MessageSum -Rows @($normalized | Where-Object { $_.RiskBand -eq "Low" })); Tone = "good" }
 )
 
-$policySummaryHtml = New-TableHtml -Title "Published Policy Landscape" -Rows $policySummary -MaxRows 20 -Columns @(
+$policySummaryHtml = ConvertTo-TableHtml -Title "Published Policy Landscape" -Rows $policySummary -MaxRows 20 -Columns @(
     @{ Property = "PolicyP"; Label = "Policy P" },
     @{ Property = "PolicyAdkim"; Label = "ADKIM" },
     @{ Property = "PolicyAspf"; Label = "ASPF" },
@@ -713,7 +712,7 @@ $policySummaryHtml = New-TableHtml -Title "Published Policy Landscape" -Rows $po
     @{ Property = "QuarantineCount"; Label = "Would Quarantine"; Formatter = { param($value) Format-Number $value } }
 )
 
-$authMatrixHtml = New-TableHtml -Title "Disposition / Alignment Matrix" -Rows $authMatrix -MaxRows 20 -Columns @(
+$authMatrixHtml = ConvertTo-TableHtml -Title "Disposition / Alignment Matrix" -Rows $authMatrix -MaxRows 20 -Columns @(
     @{ Property = "DmarcSpf"; Label = "DMARC SPF" },
     @{ Property = "DmarcDkim"; Label = "DMARC DKIM" },
     @{ Property = "DmarcDisposition"; Label = "Disposition" },
@@ -722,7 +721,7 @@ $authMatrixHtml = New-TableHtml -Title "Disposition / Alignment Matrix" -Rows $a
     @{ Property = "QuarantineCount"; Label = "Would Quarantine"; Formatter = { param($value) Format-Number $value } }
 )
 
-$riskTableHtml = New-TableHtml -Title "Highest Risk Records" -Rows $highRiskRows -MaxRows 40 -Columns @(
+$riskTableHtml = ConvertTo-TableHtml -Title "Highest Risk Records" -Rows $highRiskRows -MaxRows 40 -Columns @(
     @{ Property = "RiskBand"; Label = "Risk" },
     @{ Property = "RiskScore"; Label = "Score"; Formatter = { param($value) Format-Number $value } },
     @{ Property = "OrgName"; Label = "Reporting Org" },
@@ -737,7 +736,7 @@ $riskTableHtml = New-TableHtml -Title "Highest Risk Records" -Rows $highRiskRows
     @{ Property = "DmarcDkim"; Label = "DKIM" }
 )
 
-$quarantineTableHtml = New-TableHtml -Title "Would Quarantine Under p=quarantine" -Rows $quarantineRows -MaxRows 40 -Columns @(
+$quarantineTableHtml = ConvertTo-TableHtml -Title "Would Quarantine Under p=quarantine" -Rows $quarantineRows -MaxRows 40 -Columns @(
     @{ Property = "OrgName"; Label = "Reporting Org" },
     @{ Property = "SourceIp"; Label = "Source IP" },
     @{ Property = "SourceIpCount"; Label = "Messages"; Formatter = { param($value) Format-Number $value } },
@@ -751,7 +750,7 @@ $quarantineTableHtml = New-TableHtml -Title "Would Quarantine Under p=quarantine
     @{ Property = "RiskBand"; Label = "Risk" }
 )
 
-$internationalTableHtml = New-TableHtml -Title "International Traffic Spotlight" -Rows $internationalRows -MaxRows 30 -Columns @(
+$internationalTableHtml = ConvertTo-TableHtml -Title "International Traffic Spotlight" -Rows $internationalRows -MaxRows 30 -Columns @(
     @{ Property = "GeoCountry"; Label = "Country" },
     @{ Property = "GeoCity"; Label = "City" },
     @{ Property = "GeoOrg"; Label = "Geo Org" },
@@ -763,17 +762,17 @@ $internationalTableHtml = New-TableHtml -Title "International Traffic Spotlight"
     @{ Property = "RiskBand"; Label = "Risk" }
 )
 
-$topOrgHtml = New-LeaderboardHtml -Title "Top Reporting Organizations" -Rows $orgSummary -LabelProperty "OrgName" -ValueProperty "MessageCount" -MetaProperties @("RecordCount", "QuarantineCount") -MaxRows 12
-$topIpHtml = New-LeaderboardHtml -Title "Top Source IPs" -Rows $ipSummary -LabelProperty "SourceIp" -ValueProperty "MessageCount" -MetaProperties @("GeoCountry", "GeoCity", "GeoOrg") -MaxRows 12
-$topCountryHtml = New-LeaderboardHtml -Title "Top GEO Countries" -Rows $countrySummary -LabelProperty "GeoCountry" -ValueProperty "MessageCount" -MetaProperties @("QuarantineCount", "RecordCount") -MaxRows 12
-$topCityHtml = New-LeaderboardHtml -Title "Top GEO Cities" -Rows $citySummary -LabelProperty "GeoCity" -ValueProperty "MessageCount" -MetaProperties @("GeoRegion", "GeoCountry") -MaxRows 12
-$topSpfDomainHtml = New-LeaderboardHtml -Title "Top SPF Domains" -Rows $spfDomainSummary -LabelProperty "SpfDomain" -ValueProperty "MessageCount" -MetaProperties @("SpfResult", "QuarantineCount") -MaxRows 12
-$topDkimDomainHtml = New-LeaderboardHtml -Title "Top DKIM Domains" -Rows $dkimDomainSummary -LabelProperty "DkimDomain" -ValueProperty "MessageCount" -MetaProperties @("DkimResult", "QuarantineCount") -MaxRows 12
-$topHeaderFromHtml = New-LeaderboardHtml -Title "Top Header-From Identities" -Rows $headerFromSummary -LabelProperty "HeaderFrom" -ValueProperty "MessageCount" -MetaProperties @("QuarantineCount", "RecordCount") -MaxRows 12
-$topGeoOrgHtml = New-LeaderboardHtml -Title "Top Network Owners / GEO Orgs" -Rows $geoOrgSummary -LabelProperty "GeoOrg" -ValueProperty "MessageCount" -MetaProperties @("GeoCountry", "QuarantineCount") -MaxRows 12
-$reportDayHtml = New-LeaderboardHtml -Title "Reporting Days by Message Volume" -Rows $reportDaySummary -LabelProperty "ReportDay" -ValueProperty "MessageCount" -MetaProperties @("RecordCount") -MaxRows 14
+$topOrgHtml = ConvertTo-LeaderboardHtml -Title "Top Reporting Organizations" -Rows $orgSummary -LabelProperty "OrgName" -ValueProperty "MessageCount" -MetaProperties @("RecordCount", "QuarantineCount") -MaxRows 12
+$topIpHtml = ConvertTo-LeaderboardHtml -Title "Top Source IPs" -Rows $ipSummary -LabelProperty "SourceIp" -ValueProperty "MessageCount" -MetaProperties @("GeoCountry", "GeoCity", "GeoOrg") -MaxRows 12
+$topCountryHtml = ConvertTo-LeaderboardHtml -Title "Top GEO Countries" -Rows $countrySummary -LabelProperty "GeoCountry" -ValueProperty "MessageCount" -MetaProperties @("QuarantineCount", "RecordCount") -MaxRows 12
+$topCityHtml = ConvertTo-LeaderboardHtml -Title "Top GEO Cities" -Rows $citySummary -LabelProperty "GeoCity" -ValueProperty "MessageCount" -MetaProperties @("GeoRegion", "GeoCountry") -MaxRows 12
+$topSpfDomainHtml = ConvertTo-LeaderboardHtml -Title "Top SPF Domains" -Rows $spfDomainSummary -LabelProperty "SpfDomain" -ValueProperty "MessageCount" -MetaProperties @("SpfResult", "QuarantineCount") -MaxRows 12
+$topDkimDomainHtml = ConvertTo-LeaderboardHtml -Title "Top DKIM Domains" -Rows $dkimDomainSummary -LabelProperty "DkimDomain" -ValueProperty "MessageCount" -MetaProperties @("DkimResult", "QuarantineCount") -MaxRows 12
+$topHeaderFromHtml = ConvertTo-LeaderboardHtml -Title "Top Header-From Identities" -Rows $headerFromSummary -LabelProperty "HeaderFrom" -ValueProperty "MessageCount" -MetaProperties @("QuarantineCount", "RecordCount") -MaxRows 12
+$topGeoOrgHtml = ConvertTo-LeaderboardHtml -Title "Top Network Owners / GEO Orgs" -Rows $geoOrgSummary -LabelProperty "GeoOrg" -ValueProperty "MessageCount" -MetaProperties @("GeoCountry", "QuarantineCount") -MaxRows 12
+$reportDayHtml = ConvertTo-LeaderboardHtml -Title "Reporting Days by Message Volume" -Rows $reportDaySummary -LabelProperty "ReportDay" -ValueProperty "MessageCount" -MetaProperties @("RecordCount") -MaxRows 14
 
-$overrideHtml = New-TableHtml -Title "Policy Override Reasons" -Subtitle "The receiver reported that it applied its own internal policy or exception handling instead of relying only on the published DMARC policy result." -Rows $overrideSummary -MaxRows 20 -Columns @(
+$overrideHtml = ConvertTo-TableHtml -Title "Policy Override Reasons" -Subtitle "The receiver reported that it applied its own internal policy or exception handling instead of relying only on the published DMARC policy result." -Rows $overrideSummary -MaxRows 20 -Columns @(
     @{ Property = "PolicyOverrideType"; Label = "Override Type" },
     @{ Property = "RecordCount"; Label = "Rows"; Formatter = { param($value) Format-Number $value } },
     @{ Property = "MessageCount"; Label = "Messages"; Formatter = { param($value) Format-Number $value } },
@@ -818,7 +817,7 @@ $html = @"
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>$(Escape-Html $Title)</title>
+  <title>$(ConvertTo-HtmlEncodedText $Title)</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -1354,7 +1353,7 @@ $html = @"
       <div class="brand">
         <div class="brand-kicker">Dmarc Reporter Dashboard</div>
         <h1>DMARC Intelligence</h1>
-        <p>Built from $(Escape-Html $inputFileLabel). Generated $(Escape-Html $generatedAt).</p>
+        <p>Built from $(ConvertTo-HtmlEncodedText $inputFileLabel). Generated $(ConvertTo-HtmlEncodedText $generatedAt).</p>
       </div>
 
       <div class="nav-group">
@@ -1374,7 +1373,7 @@ $html = @"
         <div class="hero-grid">
           <div>
             <div class="brand-kicker">Dmarc Reporter Dashboard</div>
-            <h2>$(Escape-Html $Title)</h2>
+            <h2>$(ConvertTo-HtmlEncodedText $Title)</h2>
             <p>
               This dashboard blends DMARC policy, authentication outcomes, source infrastructure, geography, and weighted risk scoring into one view.
               It is intended to answer the operational questions quickly: what aligned, what would quarantine, who sent it, from where, and what deserves attention first.
@@ -1383,19 +1382,19 @@ $html = @"
           <div class="hero-meta">
             <div class="hero-meta-card">
               <div class="eyebrow">Input Dataset</div>
-              <div class="value">$(Escape-Html $inputFileLabel)</div>
+              <div class="value">$(ConvertTo-HtmlEncodedText $inputFileLabel)</div>
             </div>
             <div class="hero-meta-card">
               <div class="eyebrow">Report Window</div>
-              <div class="value">$(Escape-Html (Get-DateLabel $dateRangeStart)) to $(Escape-Html (Get-DateLabel $dateRangeEnd))</div>
+              <div class="value">$(ConvertTo-HtmlEncodedText (Get-DateLabel $dateRangeStart)) to $(ConvertTo-HtmlEncodedText (Get-DateLabel $dateRangeEnd))</div>
             </div>
             <div class="hero-meta-card">
               <div class="eyebrow">Resolved Countries</div>
-              <div class="value">$(Escape-Html (Format-Number $geoCountries.Count))</div>
+              <div class="value">$(ConvertTo-HtmlEncodedText (Format-Number $geoCountries.Count))</div>
             </div>
             <div class="hero-meta-card">
               <div class="eyebrow">Quarantine Candidates</div>
-              <div class="value">$(Escape-Html (Format-Number $quarantineMessages))</div>
+              <div class="value">$(ConvertTo-HtmlEncodedText (Format-Number $quarantineMessages))</div>
             </div>
           </div>
         </div>
@@ -1555,7 +1554,7 @@ $html = @"
       </section>
 
       <div class="footer-note">
-        Dashboard generated from <strong>$(Escape-Html $inputFileLabel)</strong>. Risk scoring is heuristic and intended for prioritization, not as a replacement for policy evaluation logic.
+        Dashboard generated from <strong>$(ConvertTo-HtmlEncodedText $inputFileLabel)</strong>. Risk scoring is heuristic and intended for prioritization, not as a replacement for policy evaluation logic.
       </div>
     </main>
   </div>
@@ -1757,3 +1756,4 @@ $html | Set-Content -LiteralPath $OutputPath -Encoding UTF8
     UniqueSourceIps       = $uniqueSourceIps
     UniqueCountries       = $geoCountries.Count
 }
+

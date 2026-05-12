@@ -152,7 +152,7 @@ function ConvertTo-FlatCsvValue {
     return [string]$Value
 }
 
-function New-Summary {
+function Get-Summary {
     param(
         [Parameter(Mandatory = $true)]
         [object[]]$Rows,
@@ -345,11 +345,11 @@ $flattenedMasterTable |
 $quarantineSimulation = $normalized |
     Select-Object ProcessDate, ReportId, ReportDateBeginUtc, ReportDateEndUtc, OrgName, DmarcDomain, PolicyP, PolicySp, PolicyPct, HeaderFrom, EnvelopeFrom, SourceIp, SourceIpVersion, SourceIpCount, DmarcDisposition, DmarcSpf, DmarcDkim, SpfDomain, SpfResult, DkimDomain, DkimSelector, DkimResult, PolicyOverrideType, PolicyOverrideComment, GeoLookupStatus, GeoCity, GeoRegion, GeoCountry, GeoLatitude, GeoLongitude, GeoOrg, GeoTimezone, DmarcAligned, WouldQuarantineUnderPQuarantine, QuarantineReason
 
-$summaryByOrg = New-Summary -Rows $normalized -GroupProperties @("OrgName") -Name "ByOrg"
-$summaryBySourceIp = New-Summary -Rows $normalized -GroupProperties @("SourceIp", "OrgName") -Name "BySourceIp"
-$summaryByAuth = New-Summary -Rows $normalized -GroupProperties @("DmarcSpf", "DmarcDkim", "DmarcDisposition") -Name "ByAuthResult"
-$summaryBySpfDomain = New-Summary -Rows $normalized -GroupProperties @("SpfDomain", "SpfResult", "DmarcSpf") -Name "BySpfDomain"
-$summaryByDkimDomain = New-Summary -Rows $normalized -GroupProperties @("DkimDomain", "DkimResult", "DmarcDkim") -Name "ByDkimDomain"
+$summaryByOrg = Get-Summary -Rows $normalized -GroupProperties @("OrgName") -Name "ByOrg"
+$summaryBySourceIp = Get-Summary -Rows $normalized -GroupProperties @("SourceIp", "OrgName") -Name "BySourceIp"
+$summaryByAuth = Get-Summary -Rows $normalized -GroupProperties @("DmarcSpf", "DmarcDkim", "DmarcDisposition") -Name "ByAuthResult"
+$summaryBySpfDomain = Get-Summary -Rows $normalized -GroupProperties @("SpfDomain", "SpfResult", "DmarcSpf") -Name "BySpfDomain"
+$summaryByDkimDomain = Get-Summary -Rows $normalized -GroupProperties @("DkimDomain", "DkimResult", "DmarcDkim") -Name "ByDkimDomain"
 
 $failures = $normalized |
     Where-Object {
